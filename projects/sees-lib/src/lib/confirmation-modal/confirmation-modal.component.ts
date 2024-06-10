@@ -13,7 +13,6 @@ export class ConfirmationModalComponent {
   @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
 
   public confirmAction() {
-    alert('xxxx');
     this.confirm.emit();
   }
 

@@ -78,16 +78,6 @@
             </select>
             <div class="select-arrow"></div>
           </div>
-          <!-- <select
-            class="form-control-select"
-            formControlName="venueID"
-            id="venueIDInput"
-          >
-            <option value="" disabled selected>Please a Venue</option>
-            <option *ngFor="let venue of venues()" [value]="venue.venueID">
-              {{ venue.venueName }}
-            </option>
-          </select> -->
           <span
             *ngIf="
               eventForm().get('venueID')?.invalid &&

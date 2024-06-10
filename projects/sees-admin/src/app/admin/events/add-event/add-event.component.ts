@@ -10,29 +10,28 @@ import {
   signal,
 } from '@angular/core';
 import {
-  DatePickerComponent,
-  InputFieldComponent,
-  ModalFormComponent,
-  TimePickerComponent,
-} from '../../../../../../sees-lib/src/public-api';
-import { EventsService } from '../service/events.service';
-import { NotificationService } from '../../../../../../../service/notification.service';
-import { VenuesService } from '../../venue/service/venues.service';
-import { FormatDateService } from '../../../../../../../service/format-date.service';
-import { UnsubscribeService } from '../../../../../../../common/UnsubscribeService';
-import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Venue } from '../../venue/venue.interface';
-import { Events } from '../event.interface';
+import { UnsubscribeService } from '../../../../../../../common/UnsubscribeService';
 import {
   ADDED_SUCCESS,
   ERROR_MESSAGE,
 } from '../../../../../../../conts/app.const';
-import { switchMap } from 'rxjs';
+import { FormatDateService } from '../../../../../../../service/format-date.service';
+import { NotificationService } from '../../../../../../../service/notification.service';
+import {
+  DatePickerComponent,
+  InputFieldComponent,
+  ModalFormComponent,
+  TimePickerComponent,
+} from '../../../../../../sees-lib/src/public-api';
+import { VenuesService } from '../../venue/service/venues.service';
+import { Venue } from '../../venue/venue.interface';
+import { Events } from '../event.interface';
+import { EventsService } from '../service/events.service';
 
 @Component({
   selector: 'sees-app-add-event',

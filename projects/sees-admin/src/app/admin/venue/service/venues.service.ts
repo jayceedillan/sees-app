@@ -28,6 +28,7 @@ export class VenuesService {
   });
 
   public getAllVenues(): Observable<Venue[]> {
+    debugger;
     return this.http.get<Venue[]>(`${this.apiUrl}/Venue/getAll`);
   }
 

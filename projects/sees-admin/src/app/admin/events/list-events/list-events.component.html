@@ -4,7 +4,7 @@
   (searchEvent)="onLoadAndSearch($event)"
 ></sees-lib-search-bar-button>
 <sees-lib-tables
-  [data]="eventsData().players"
+  [data]="eventsData().events"
   [columns]="columns()"
   description="List of Events"
   [currentPage]="currentPage()"
@@ -18,3 +18,9 @@
   [currentPage]="currentPage()"
   (cancelEvent)="onCancel()"
 ></sees-app-add-event>
+<sees-app-edit-event
+  *ngIf="isEditShowModal()"
+  [event]="selectedEvent()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancelEdit()"
+></sees-app-edit-event>

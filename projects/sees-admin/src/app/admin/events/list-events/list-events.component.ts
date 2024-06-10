@@ -22,6 +22,8 @@ import {
 } from '../../../../../../../conts/app.const';
 import { Events } from '../event.interface';
 import { AddEventComponent } from '../add-event/add-event.component';
+import { FormatDateService } from '../../../../../../../service/format-date.service';
+import { EditEventComponent } from '../edit-event/edit-event.component';
 
 @Component({
   selector: 'sees-app-list-events',
@@ -34,6 +36,7 @@ import { AddEventComponent } from '../add-event/add-event.component';
     TablesComponent,
     CommonModule,
     AddEventComponent,
+    EditEventComponent,
   ],
 })
 export class ListEventsComponent implements OnInit {
@@ -45,12 +48,20 @@ export class ListEventsComponent implements OnInit {
 
   public eventsService = inject(EventsService);
   private notificationService = inject(NotificationService);
+  private formatDateService = inject(FormatDateService);
 
   public eventsData = computed(() => {
     const events = this.eventsService.getEvents();
 
+    const mapEvents = ((events().data ?? []) as Events[]).map((event) => ({
+      ...event,
+      eventDate: this.formatDateService.formatDate(new Date(event.eventDate)),
+      startTime: this.formatDateService.formatTime(new Date(event.startTime)),
+      venueName: event.venue.venueName,
+    }));
+
     return {
-      players: events().data,
+      events: mapEvents,
       totalRowsCount: events().totalCount,
     };
   });
@@ -92,6 +103,10 @@ export class ListEventsComponent implements OnInit {
   public onEdit(event: { [key: string]: any }): void {
     this.isEditShowModal.set(true);
     this.selectedEvent.set(event as Events);
+  }
+
+  public onCancelEdit(): void {
+    this.isEditShowModal.set(false);
   }
 
   public onCancel(): void {
