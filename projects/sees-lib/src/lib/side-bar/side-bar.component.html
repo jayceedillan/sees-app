@@ -1,0 +1,20 @@
+<aside class="side-bar" [class.open]="isSidebarOpen">
+  <button class="close-btn" (click)="toggleSidebar()">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="logo">
+    <img src="../../assets/depedLogo.jpg" alt="Deped" /><img
+      src="../../assets/deped-matatag.png"
+      alt="Deped Matatag"
+      class="logo_matatag"
+    />
+  </div>
+  <ul>
+    <li *ngFor="let item of menu" class="menu-item">
+      {{ item.name }}
+      <ul class="nested-menu" *ngIf="item.children">
+        <li *ngFor="let child of item.children">{{ child.name }}</li>
+      </ul>
+    </li>
+  </ul>
+</aside>

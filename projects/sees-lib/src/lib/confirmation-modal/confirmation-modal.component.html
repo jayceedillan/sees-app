@@ -1,0 +1,16 @@
+<div class="modal">
+  <div class="modal-content">
+    <button
+      class="close"
+      (click)="cancelAction()"
+      (keydown.enter)="cancelAction()"
+    >
+      <i class="fas fa-times"></i>
+    </button>
+    <p>Are you sure you want to proceed?</p>
+    <div class="footer-buttons">
+      <sees-lib-button text="Cancel" (click)="cancelAction()"></sees-lib-button>
+      <sees-lib-button text="Ok" (click)="confirmAction()"></sees-lib-button>
+    </div>
+  </div>
+</div>

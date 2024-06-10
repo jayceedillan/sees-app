@@ -1,0 +1,42 @@
+$primary-color: #15dd66;
+$secondary-color: #590f02;
+$dark_red: #54110a;
+$light_black: #021202;
+$text-color: #fff;
+$linear_first-color: rgb(6, 54, 138);
+$linear_second-color: #3358f4;
+$custom-box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+  0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+$second-box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.23),
+  0 6px 10px -5px rgba(0, 0, 0, 0.25);
+$custom_background_gradient: linear-gradient(rgb(0, 0, 0), rgb(2, 11, 18));
+$custom-linear-gradient: linear-gradient(310deg, #590f02 0%, #590f02 100%);
+$custom_modal_shadow: 0 15px 35px rgba(50, 50, 93, 0.2),
+  0 5px 15px rgba(0, 0, 0, 0.17);
+
+$ligth_blue: #0099cc;
+
+@mixin button-styles {
+  height: 1.875rem;
+  min-width: 1.875rem;
+  width: 1.875rem;
+  padding: 0;
+  font-size: 0.9375rem;
+  overflow: hidden;
+  position: relative;
+  line-height: normal;
+  background-image: linear-gradient(
+    310deg,
+    $primary-color 0%,
+    $secondary-color 100%
+  );
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  transition: all 0.15s ease;
+  border: none;
+  color: $text-color;
+  border-radius: 100%;
+  &:hover {
+    color: $primary-color;
+  }
+}

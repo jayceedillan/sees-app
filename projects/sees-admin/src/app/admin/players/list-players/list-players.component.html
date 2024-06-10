@@ -1,0 +1,18 @@
+<sees-lib-search-bar-button
+  buttonText="Add New Player"
+  (openModalEvent)="openModal()"
+  (searchEvent)="onLoadAndSearch($event)"
+></sees-lib-search-bar-button>
+<sees-lib-tables
+  [data]="playersData().players"
+  [columns]="columns()"
+  description="List of Players"
+  [currentPage]="currentPage()"
+  (deleteEvent)="onDelete($event)"
+  [totalRowsCount]="playersData().totalRowsCount"
+  (pageChange)="loadPerPage($event)"
+></sees-lib-tables>
+<sees-app-add-players
+  *ngIf="isShowModal()"
+  (cancelEvent)="onCancel()"
+></sees-app-add-players>

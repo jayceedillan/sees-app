@@ -1,0 +1,65 @@
+<sees-lib-top-nav
+  (toggleSidebarEvent)="sideBar.toggleSidebar()"
+></sees-lib-top-nav>
+<div class="main-container">
+  <div class="wrapper">
+    <sees-lib-side-bar #sideBar [menu]="menu"></sees-lib-side-bar>
+    <div class="content">
+      <router-outlet />
+      <!-- <sees-lib-tables description="List Of Players"></sees-lib-tables> -->
+      <!-- <div class="table-container">
+        <h4>List of Players</h4>
+        <div class="table-wrapper">
+          <div class="table-row">
+            <div class="table-header">Name</div>
+            <div class="table-header">Middle Initial</div>
+            <div class="table-header">LastName</div>
+            <div class="table-header">Birthday</div>
+            <div class="table-header">Contact No.</div>
+            <div class="table-header">Email Address</div>
+            <div class="table-header">Age</div>
+            <div class="table-header">Gender</div>
+            <div class="table-header">Height</div>
+            <div class="table-header">Weight</div>
+            <div class="table-header">Team Name</div>
+            <div class="table-header">Level</div>
+          </div>
+          <div *ngFor="let player of players" class="table-row">
+            <div class="table-cell" data-label="Name">{{ player.name }}</div>
+            <div class="table-cell" data-label="Middle Initial">
+              {{ player.middleInitial }}
+            </div>
+            <div class="table-cell" data-label="LastName">
+              {{ player.lastName }}
+            </div>
+            <div class="table-cell" data-label="Birthday">
+              {{ player.birthday }}
+            </div>
+            <div class="table-cell" data-label="Contact No.">
+              {{ player.contactNo }}
+            </div>
+            <div class="table-cell" data-label="Email Address">
+              {{ player.email }}
+            </div>
+            <div class="table-cell" data-label="Age">{{ player.age }}</div>
+            <div class="table-cell" data-label="Gender">
+              {{ player.gender }}
+            </div>
+            <div class="table-cell" data-label="Height">
+              {{ player.height }}
+            </div>
+            <div class="table-cell" data-label="Weight">
+              {{ player.weight }}
+            </div>
+            <div class="table-cell" data-label="Team Name">
+              {{ player.teamName }}
+            </div>
+            <div class="table-cell" data-label="Level">{{ player.level }}</div>
+          </div>
+        </div>
+        <sees-lib-pagination></sees-lib-pagination>
+      </div> -->
+    </div>
+  </div>
+</div>
+<sees-lib-footer></sees-lib-footer>

@@ -1,0 +1,88 @@
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-image: linear-gradient(to right, #2980b9, #6dd5fa);
+  height: 80px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  color: #fff;
+
+  .title {
+    font-size: 1.5em;
+    padding: 5px;
+    box-shadow: 5px 5px 5px 0px rgb(21 221 102);
+  }
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  i {
+    margin-right: 5px;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .burger-menu-wrapper {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .burger-menu-wrapper {
+      display: block;
+    }
+
+    .logout-btn {
+      margin-top: 10px;
+      margin-right: 20px; /* Adjust margin for mobile layout */
+    }
+  }
+}
+
+svg {
+  font-family: "Rubik Vinyl", sans-serif;
+  width: 25%;
+  height: 100%;
+}
+
+svg text {
+  animation: stroke 5s infinite alternate;
+  stroke-width: 2;
+  stroke: #fff;
+  font-size: 30px;
+  box-shadow: 1px 4px 20px 4px white;
+}
+@keyframes stroke {
+  0% {
+    fill: #fff;
+    stroke: rgba(54, 95, 160, 1);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+  30% {
+    fill: rgb(255, 217, 0);
+    stroke: #3b24e9;
+  }
+
+  70% {
+    fill: #15dd66;
+    stroke: rgba(54, 95, 160, 1);
+  }
+  80% {
+    fill: #15dd66;
+    stroke: rgba(54, 95, 160, 1);
+    stroke-width: 3;
+  }
+  100% {
+    fill: #fff;
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
+}

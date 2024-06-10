@@ -1,0 +1,46 @@
+<div class="date-picker">
+  <input
+    class="form-control"
+    type="text"
+    placeholder="{{ placeHolder }}"
+    [(ngModel)]="selectedDate"
+    (keydown.enter)="onEnter()"
+  />
+  <i
+    (click)="toggleCalendar()"
+    class="far fa-calendar-alt calendar-icon calendar-icon"
+  ></i>
+  <div class="calendar" *ngIf="showCalendar">
+    <div class="header">
+      <button (click)="prevMonth()">&lt;</button>
+      <button (click)="toggleYearDropdown()">
+        {{ currentMonth | date : "MMMM yyyy" }}
+        <i class="fa fa-angle-down"></i>
+      </button>
+      <button (click)="nextMonth()">&gt;</button>
+    </div>
+    <ng-container *ngIf="showYearDropdown">
+      <div class="years-dropdown">
+        <div
+          class="year-text"
+          *ngFor="let year of years"
+          [class.highlighted-year]="year === selectedYear"
+        >
+          <div (click)="selectYear(year)">
+            {{ year }}
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <div class="days">
+      <div
+        *ngFor="let day of daysInMonth"
+        [class.today]="isToday(day)"
+        [class.selected]="isSelected(day)"
+        (mousedown)="selectDate(day)"
+      >
+        {{ day | date : "d" }}
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,42 +3,42 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "sees-app": {
+    "sees-admin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
+      "root": "projects/sees-admin",
+      "sourceRoot": "projects/sees-admin/src",
+      "prefix": "sees-app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/sees-app",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
+            "outputPath": "dist/sees-admin",
+            "index": "projects/sees-admin/src/index.html",
+            "browser": "projects/sees-admin/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/sees-admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "projects/sees-admin/public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/sees-admin/src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
+            "server": "projects/sees-admin/src/main.server.ts",
             "prerender": true,
             "ssr": {
-              "entry": "server.ts"
+              "entry": "projects/sees-admin/server.ts"
             }
           },
           "configurations": {
@@ -67,12 +67,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4201
+          },
           "configurations": {
             "production": {
-              "buildTarget": "sees-app:build:production"
+              "buildTarget": "sees-admin:build:production"
             },
             "development": {
-              "buildTarget": "sees-app:build:development"
+              "buildTarget": "sees-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,22 +86,144 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/sees-admin/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "projects/sees-admin/public"
+              }
+            ],
+            "styles": ["projects/sees-admin/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "sees-users": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/sees-users",
+      "sourceRoot": "projects/sees-users/src",
+      "prefix": "sees-app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/sees-users",
+            "index": "projects/sees-users/src/index.html",
+            "browser": "projects/sees-users/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "projects/sees-users/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/sees-users/public"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/sees-users/src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
+            "scripts": [],
+            "server": "projects/sees-users/src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "projects/sees-users/server.ts"
+            }
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4202
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sees-users:build:production"
+            },
+            "development": {
+              "buildTarget": "sees-users:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "projects/sees-users/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/sees-users/public"
+              }
+            ],
+            "styles": ["projects/sees-users/src/styles.scss"],
             "scripts": []
+          }
+        }
+      }
+    },
+    "sees-lib": {
+      "projectType": "library",
+      "root": "projects/sees-lib",
+      "sourceRoot": "projects/sees-lib/src",
+      "prefix": "sees-lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/sees-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sees-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/sees-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/sees-lib/tsconfig.spec.json",
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }

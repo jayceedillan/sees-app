@@ -1,0 +1,24 @@
+<div class="form-group input-group">
+  <label class="control-label" [for]="controlName">{{ label }}</label>
+  <input
+    [id]="controlName"
+    [type]="type"
+    [placeholder]="label"
+    class="form-control"
+    [formControl]="control!"
+  />
+  <span
+    *ngIf="control?.invalid && (control?.dirty || control?.touched)"
+    class="text-danger"
+  >
+    <span class="text-danger" *ngIf="control?.errors?.['required']"
+      >{{ label }} is required.</span
+    >
+    <span class="text-danger" *ngIf="control?.errors?.['email']">
+      Please enter a valid email address.
+    </span>
+    <span class="text-danger" *ngIf="control?.errors?.['min']">
+      Score must be greater than or equal to 0
+    </span>
+  </span>
+</div>

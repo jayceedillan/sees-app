@@ -1,0 +1,16 @@
+<div class="button-wrapper">
+  <div class="form-group input-group">
+    <i class="fas fa-search"></i>
+    <input
+      placeholder="Search {{ placeHolder }}"
+      class="form-control"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+      S
+    />
+  </div>
+  <sees-lib-button
+    text="{{ buttonText }}"
+    (clickEvent)="onOpenModal()"
+  ></sees-lib-button>
+</div>

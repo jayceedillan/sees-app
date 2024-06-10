@@ -1,0 +1,151 @@
+@import "../../../../../shared/variable.scss";
+
+@mixin custom-button {
+  border-width: 2px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  margin: 4px 1px;
+  border-radius: 0.4285rem;
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  transition: all 0.15s ease;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  // border: 1px solid transparent;
+  padding: 11px 40px;
+  font-size: 0.875rem;
+  line-height: 1.35em;
+
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+h2 {
+  padding-left: 12px;
+  padding-top: 10px;
+  text-transform: uppercase;
+  color: white;
+  box-shadow: 1px 3px 10px 0px rgb(245, 243, 243);
+  margin-bottom: 20px;
+}
+
+@media (min-width: 576px) {
+  .modal-sm {
+    max-width: 380px;
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 850px;
+    margin: 1.75rem auto;
+  }
+
+  .modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+}
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  // min-height: calc(100% - 1rem);
+}
+
+@media (min-width: 576px) {
+  .modal-content {
+    box-shadow: $custom_modal_shadow;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  overflow: hidden;
+  outline: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #15dd66 #15dd66;
+  border-radius: 15px;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 5px;
+    width: 8px;
+  }
+
+  .modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-clip: padding-box;
+
+    border: 1px solid rgba(34, 42, 66, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.5);
+
+    .card {
+      // background-color: #04081c;
+      background-image: linear-gradient(#04081c, #172b90);
+
+      .card-body {
+        hr {
+          background-color: #15dd66;
+          height: 1px;
+          border: none;
+          margin-top: 40px;
+        }
+        .buttons {
+          display: flex;
+          justify-content: flex-end;
+          gap: 10px;
+          margin-top: 10px;
+          height: 50px;
+
+          // .btn-cancel {
+          //   // @include custom-button;
+          //   color: $text-color;
+          //   background-image: linear-gradient($dark_red, $dark_red);
+          // }
+          // .btn-save {
+          //   // @include custom-button;
+          //   background-image: linear-gradient($primary-color, $light_black);
+          //   color: $text-color;
+
+          //   &:hover {
+          //     color: $light_black;
+          //   }
+          // }
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep sees-lib-button.btn-cancel {
+  --custom-bg: linear-gradient(310deg, #e2e1e6 0%, #e2e1e6 100%);
+  --textColor: #000;
+  --shadow: gray;
+}
+
+:host ::ng-deep sees-lib-button.btn-save {
+  --custom-bg: linear-gradient(310deg, #337ab7 0%, #337ab7 100%);
+}

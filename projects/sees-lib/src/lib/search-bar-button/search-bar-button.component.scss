@@ -1,0 +1,37 @@
+@import "../../../../../shared/variable.scss";
+
+.button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  .input-group {
+    margin-bottom: 0;
+  }
+
+  i {
+    position: absolute;
+    left: 8px;
+    color: $text-color;
+    top: 13px;
+  }
+
+  .form-group {
+    position: relative;
+  }
+
+  .form-group .form-control,
+  .input-group .form-control {
+    padding: 10px 25px;
+  }
+}
+
+:host ::ng-deep .btn-primary {
+  background-image: linear-gradient(
+    to bottom left,
+    #079541,
+    #15dd66,
+    #15dd66
+  ) !important;
+}

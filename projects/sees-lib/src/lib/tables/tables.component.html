@@ -1,0 +1,91 @@
+<div class="table-container">
+  <h4>{{ description }}</h4>
+  <div class="table-wrapper">
+    <div class="table-row">
+      <div class="table-header" *ngFor="let column of columns">
+        {{ convertCamelCaseToSpacedString(column) }}
+      </div>
+      <div class="table-header">Action</div>
+    </div>
+    <div *ngFor="let item of data" class="table-row">
+      <div
+        class="table-cell"
+        [attr.data-label]="convertCamelCaseToSpacedString(column)"
+        *ngFor="let column of columns"
+      >
+        <ng-container
+          *ngIf="
+            column !== 'logo' &&
+              column !== 'profilePic' &&
+              column !== 'teamColor';
+            else logoOrColorColumn
+          "
+        >
+          {{ item[column] }}
+        </ng-container>
+
+        <ng-template #logoOrColorColumn>
+          <ng-container *ngIf="column === 'logo' || column === 'profilePic'">
+            <div class="logo">
+              <img *ngIf="item[column]" [src]="item[column]" alt="Logo" />
+            </div>
+          </ng-container>
+
+          <ng-container *ngIf="column === 'teamColor'">
+            <div class="color-box" [style.backgroundColor]="item[column]">
+              {{ item[column] }}
+            </div>
+          </ng-container>
+        </ng-template>
+      </div>
+
+      <div class="table-cell">
+        <div class="buttons">
+          <button
+            type="button"
+            class="btn-icon-edit"
+            (click)="selectedEditItem(item)"
+          >
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+          <ng-container *ngIf="isShowActiveAndInActiveButtons">
+            <button
+              type="button"
+              class="btn-icon-ban"
+              (click)="isActive(item, true)"
+              *ngIf="!item['isActive']"
+            >
+              <i class="fa fa-ban" style="font-size: 12px"></i>
+            </button>
+            <button
+              type="button"
+              class="btn-icon-ligh-bulb"
+              (click)="isActive(item, false)"
+              *ngIf="item['isActive']"
+            >
+              <i class="fa fa-lightbulb" style="font-size: 12px"></i>
+            </button>
+          </ng-container>
+          <button
+            type="button"
+            class="btn-icon-delete"
+            (click)="selectedDeleteItem(item)"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <sees-lib-pagination
+      [currentPage]="currentPage"
+      [totalRowsCount]="totalRowsCount"
+      (pageChange)="loadPageNumber($event)"
+    ></sees-lib-pagination>
+  </div>
+</div>
+
+<sees-lib-confirmation-modal
+  (confirm)="onDelete()"
+  (cancel)="onCancel()"
+  *ngIf="isConfirmShowModal()"
+></sees-lib-confirmation-modal>

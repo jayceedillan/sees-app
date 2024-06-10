@@ -1,0 +1,17 @@
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 24px;
+  width: 30px;
+  cursor: pointer;
+
+  i {
+    color: #fff;
+    font-size: 30px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}

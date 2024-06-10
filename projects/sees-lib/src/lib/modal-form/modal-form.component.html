@@ -1,0 +1,29 @@
+<div class="modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="card">
+        <h2>{{ title }}</h2>
+        <div class="card-body">
+          <ng-content></ng-content>
+          <hr />
+          <div class="buttons">
+            <sees-lib-button
+              class="btn-cancel"
+              *ngIf="isShowCancel"
+              (click)="onCancel()"
+            >
+              Cancel
+            </sees-lib-button>
+            <sees-lib-button
+              class="btn-save"
+              *ngIf="isShowSave"
+              (click)="onSave()"
+            >
+              Save
+            </sees-lib-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

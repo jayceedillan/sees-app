@@ -1,0 +1,107 @@
+.input-group {
+  display: flex;
+}
+
+.date-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.calendar {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 320px;
+  background-color: #01080c;
+  border-right: 5px solid #15dd66;
+  border-bottom: 5px solid #15dd66;
+  border-left: 1px solid #15dd66;
+  border-top: 1px solid #15dd66;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+
+  .years-dropdown {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    border: 1px solid #ccc;
+    color: white;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+
+    .year-text {
+      padding: 5px;
+      margin: 10px 0 0 18px;
+      width: 55px;
+      cursor: pointer;
+      &.highlighted-year {
+        color: #15dd66;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 5px;
+        background-image: linear-gradient(310deg, #590f02 0%, #590f02 100%);
+      }
+      &:hover {
+        color: #15dd66;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 5px;
+        background-image: linear-gradient(310deg, #590f02 0%, #590f02 100%);
+      }
+    }
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.days div {
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.today,
+.selected {
+  border-radius: 100%;
+  background-image: linear-gradient(#15dd66, #a3c0b8);
+  color: #fff;
+  height: 50px;
+  width: 50px;
+  font-weight: 700;
+  display: flex;
+  padding-right: 10px;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.calendar-icon {
+  color: #15dd66;
+  font-size: 30px;
+  padding-left: 5px;
+}

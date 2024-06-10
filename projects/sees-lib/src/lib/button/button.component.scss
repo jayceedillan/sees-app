@@ -1,0 +1,26 @@
+.btn {
+  cursor: pointer;
+  background-image: var(
+    --custom-bg,
+    linear-gradient(310deg, #590f02 0%, #590f02 100%)
+  );
+
+  color: var(--textColor, #fff);
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.95;
+  margin-right: 20px;
+  box-shadow: 0px 5px 5px 0 var(--shadow, rgb(83 180 225));
+  border: none;
+
+  &:hover {
+    background-image: linear-gradient(310deg, #15dd66 0%, #15dd66 100%);
+  }
+
+  i {
+    margin-right: 5px;
+  }
+}

@@ -1,0 +1,17 @@
+<sees-lib-modal-form
+  (cancelEvent)="onCancel()"
+  (saveEvent)="onSave()"
+  title="Add Sport"
+>
+  <form [formGroup]="sportForm()">
+    <div class="row">
+      <div class="col-md-12">
+        <sees-lib-input-field
+          label="Sport Name"
+          controlName="sportName"
+          [control]="$any(sportForm().get('sportName'))"
+        ></sees-lib-input-field>
+      </div>
+    </div>
+  </form>
+</sees-lib-modal-form>

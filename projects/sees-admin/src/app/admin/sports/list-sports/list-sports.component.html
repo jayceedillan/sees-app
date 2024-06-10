@@ -1,0 +1,18 @@
+<sees-lib-search-bar-button
+  buttonText="Add New Sport"
+  (openModalEvent)="openModal()"
+  (searchEvent)="onLoadAndSearch($event)"
+></sees-lib-search-bar-button>
+<sees-lib-tables
+  [data]="sportData().players"
+  [columns]="columns()"
+  description="List of Sports"
+  [currentPage]="currentPage()"
+  (deleteEvent)="onDelete($event)"
+  [totalRowsCount]="sportData().totalRowsCount"
+  (pageChange)="loadPerPage($event)"
+></sees-lib-tables>
+<sees-app-add-sports
+  *ngIf="isAddShowModal()"
+  (cancelEvent)="onCancel()"
+></sees-app-add-sports>
