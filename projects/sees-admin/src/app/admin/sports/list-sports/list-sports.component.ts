@@ -21,6 +21,7 @@ import {
 import { AddSportsComponent } from '../add-sports/add-sports.component';
 import { SportsService } from '../service/sports.service';
 import { Sport } from '../sport.interace';
+import { EditSportsComponent } from '../edit-sports/edit-sports.component';
 
 @Component({
   selector: 'sees-app-list-sports',
@@ -33,6 +34,7 @@ import { Sport } from '../sport.interace';
     TablesComponent,
     AddSportsComponent,
     CommonModule,
+    EditSportsComponent,
   ],
 })
 export class ListSportsComponent implements OnInit {
@@ -75,9 +77,7 @@ export class ListSportsComponent implements OnInit {
   }
 
   public onDelete(sport: { [key: string]: any }): void {
-    debugger;
     const { sportID } = sport;
-
     this.unsub.subs = this.sportsService.deleteSport(sportID).subscribe({
       next: () => {
         this.loadPerPage(this.currentPage());

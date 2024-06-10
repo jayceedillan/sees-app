@@ -54,7 +54,6 @@ export class SportsService {
     pageNumber: number,
     query = ''
   ): Observable<ResponseData<Sport[]>> {
-    debugger;
     return of(query).pipe(
       debounceTime(300),
       distinctUntilChanged(),
@@ -63,7 +62,6 @@ export class SportsService {
       ),
       take(1),
       tap((responseData) => {
-        debugger;
         this.sports.set(responseData);
       })
     );

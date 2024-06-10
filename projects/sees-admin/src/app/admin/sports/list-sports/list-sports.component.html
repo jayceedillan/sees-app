@@ -9,6 +9,7 @@
   description="List of Sports"
   [currentPage]="currentPage()"
   (deleteEvent)="onDelete($event)"
+  (editEvent)="onEdit($event)"
   [totalRowsCount]="sportData().totalRowsCount"
   (pageChange)="loadPerPage($event)"
 ></sees-lib-tables>
@@ -16,3 +17,10 @@
   *ngIf="isAddShowModal()"
   (cancelEvent)="onCancel()"
 ></sees-app-add-sports>
+xx{{ isEditShowModal() }}xx
+<sees-app-edit-sports
+  *ngIf="isEditShowModal()"
+  [sport]="selectedSport()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancelEdit()"
+></sees-app-edit-sports>
