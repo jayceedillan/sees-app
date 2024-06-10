@@ -27,6 +27,10 @@ export const routes: Routes = [
     path: 'admin/list-venues',
     component: ListVenuesComponent,
   },
+  {
+    path: 'admin/list-events',
+    component: ListEventsComponent,
+  },
 ];
 
 //https://www.youtube.com/watch?v=nXJFhZdbWzw

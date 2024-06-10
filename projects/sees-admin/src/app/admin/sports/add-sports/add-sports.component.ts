@@ -63,15 +63,17 @@ export class AddSportsComponent {
         next: () => {
           this.sportForm().reset();
           this.notificationService.showSuccess(ADDED_SUCCESS);
-          this.unsub.subs = this.sportsService
-            .loadSportAndSearch(1)
-            .subscribe();
+          this.reloadSports();
         },
         error: () => {
           this.notificationService.showError(ERROR_MESSAGE);
         },
       });
     }
+  }
+
+  private reloadSports(): void {
+    this.unsub.subs = this.sportsService.loadSportAndSearch(1).subscribe();
   }
 
   public onCancel(): void {

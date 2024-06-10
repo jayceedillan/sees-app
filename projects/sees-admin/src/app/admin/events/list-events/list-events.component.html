@@ -1,1 +1,20 @@
-<p>list-events works!</p>
+<sees-lib-search-bar-button
+  buttonText="Add New Event"
+  (openModalEvent)="openModal()"
+  (searchEvent)="onLoadAndSearch($event)"
+></sees-lib-search-bar-button>
+<sees-lib-tables
+  [data]="eventsData().players"
+  [columns]="columns()"
+  description="List of Events"
+  [currentPage]="currentPage()"
+  (deleteEvent)="onDelete($event)"
+  (editEvent)="onEdit($event)"
+  [totalRowsCount]="eventsData().totalRowsCount"
+  (pageChange)="loadPerPage($event)"
+></sees-lib-tables>
+<sees-app-add-event
+  *ngIf="isAddShowModal()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancel()"
+></sees-app-add-event>

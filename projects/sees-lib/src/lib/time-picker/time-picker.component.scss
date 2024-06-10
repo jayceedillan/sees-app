@@ -1,0 +1,47 @@
+.time-picker {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  .popup {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #ffffff;
+    border: 1px solid #c4d1eb;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 10;
+
+    input:hover {
+      color: white;
+    }
+    .form-control {
+      color: #000;
+      appearance: none;
+    }
+
+    .buttons {
+      margin-top: 10px;
+    }
+  }
+}
+
+:host ::ng-deep sees-lib-button.clear-button {
+  --custom-bg: linear-gradient(310deg, #e83305 0%, #e83305 100%);
+  --textColor: #000;
+  --padding: 10px;
+  --marginRight: 0;
+}
+
+:host ::ng-deep sees-lib-button.cancel-button {
+  --custom-bg: linear-gradient(310deg, #e2e1e6 0%, #e2e1e6 100%);
+  --textColor: #000;
+  --shadow: gray;
+}
+
+:host ::ng-deep sees-lib-button.ok-button {
+  --custom-bg: linear-gradient(310deg, #337ab7 0%, #337ab7 100%);
+}

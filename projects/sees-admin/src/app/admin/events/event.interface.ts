@@ -1,4 +1,4 @@
-import { Venue } from '../venue-management/venue.interface';
+import { Venue } from '../venue/venue.interface';
 
 export interface Events {
   eventID: number;

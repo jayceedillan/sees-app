@@ -1,1 +1,104 @@
-<p>add-event works!</p>
+<sees-lib-modal-form
+  (cancelEvent)="onCancel()"
+  (saveEvent)="onSave()"
+  title="Add Events"
+>
+  <form [formGroup]="eventForm()">
+    <div class="row container">
+      <div class="col-md-6">
+        <sees-lib-input-field
+          label="Event Code"
+          controlName="eventCode"
+          [control]="$any(eventForm().get('eventCode'))"
+        ></sees-lib-input-field>
+      </div>
+      <div class="col-md-6">
+        <sees-lib-input-field
+          label="Event Name"
+          controlName="eventName"
+          [control]="$any(eventForm().get('eventName'))"
+        ></sees-lib-input-field>
+      </div>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group input-group">
+              <label class="control-label" for="eventDateInput">
+                Event Date
+              </label>
+              <sees-lib-date-picker
+                id="eventDateInput"
+                placeHolder="Event Date"
+                [selectedDate]="selectedDate()"
+                (selectedDateChanged)="onDateChanged($event)"
+              ></sees-lib-date-picker>
+              <span
+                *ngIf="
+                  eventForm().get('eventDate')?.invalid &&
+                  (eventForm().get('eventDate')?.dirty ||
+                    eventForm().get('eventDate')?.touched)
+                "
+                class="text-danger"
+                >Event Date is required</span
+              >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="control-label" for="startTimeInput">
+              Start Time
+            </label>
+            <sees-lib-time-picker
+              [id]="'startTimeInput'"
+              [selectedTime]="selectedTime()"
+              (TimeChangedValue)="onChangedTime($event)"
+            >
+            </sees-lib-time-picker>
+            <span
+              *ngIf="
+                eventForm().get('startTime')?.invalid &&
+                (eventForm().get('startTime')?.dirty ||
+                  eventForm().get('startTime')?.touched)
+              "
+              class="text-danger start-time"
+              >Start Time is required</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row container">
+      <div class="col-md-6">
+        <div class="form-group input-group">
+          <label class="control-label" for="venueIDInput"> Venue </label>
+          <div class="custom-select">
+            <select formControlName="venueID" id="venueIDInput">
+              <option *ngFor="let venue of venues()" [value]="venue.venueID">
+                {{ venue.venueName }}
+              </option>
+            </select>
+            <div class="select-arrow"></div>
+          </div>
+          <!-- <select
+            class="form-control-select"
+            formControlName="venueID"
+            id="venueIDInput"
+          >
+            <option value="" disabled selected>Please a Venue</option>
+            <option *ngFor="let venue of venues()" [value]="venue.venueID">
+              {{ venue.venueName }}
+            </option>
+          </select> -->
+          <span
+            *ngIf="
+              eventForm().get('venueID')?.invalid &&
+              (eventForm().get('venueID')?.dirty ||
+                eventForm().get('venueID')?.touched)
+            "
+            class="text-danger"
+            >Venue is required</span
+          >
+        </div>
+      </div>
+    </div>
+  </form>
+</sees-lib-modal-form>

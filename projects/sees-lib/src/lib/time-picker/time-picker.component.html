@@ -1,0 +1,37 @@
+<div class="time-picker">
+  <input
+    [id]="id"
+    class="form-control"
+    type="text"
+    [(ngModel)]="selectedTime"
+    (focus)="openPopup()"
+    [value]="selectedTime"
+    readonly
+  />
+  <sees-lib-button class="clear-button" (click)="onClear()">
+    <i class="fa-solid fa-eraser"></i
+  ></sees-lib-button>
+
+  <div *ngIf="isPopupOpen()" class="popup">
+    <input
+      class="form-control"
+      type="time"
+      [(ngModel)]="tempTime"
+      (input)="onTimeInputChange()"
+    />
+
+    <div class="buttons">
+      <sees-lib-button
+        text="Cancel"
+        class="cancel-button"
+        (click)="onCancel()"
+      ></sees-lib-button>
+
+      <sees-lib-button
+        text="Ok"
+        class="ok-button"
+        (click)="onOk()"
+      ></sees-lib-button>
+    </div>
+  </div>
+</div>
