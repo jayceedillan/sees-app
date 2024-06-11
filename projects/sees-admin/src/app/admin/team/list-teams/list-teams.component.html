@@ -13,3 +13,15 @@
   [totalRowsCount]="teamData().totalRowsCount"
   (pageChange)="loadPerPage($event)"
 ></sees-lib-tables>
+<sees-app-add-team
+  *ngIf="isAddShowModal()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancel()"
+></sees-app-add-team>
+<sees-app-edit-team
+  *ngIf="isEditShowModal()"
+  [team]="selectedTeam()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancelEdit()"
+  (saveEvent)="onSaveEdit()"
+></sees-app-edit-team>

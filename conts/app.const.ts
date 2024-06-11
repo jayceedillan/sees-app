@@ -49,3 +49,4 @@ export const COLUMN_NAME_USER = [
 ];
 
 export const COLUMN_NAME_TEAM = ['teamName', 'logo', 'teamColor'];
+export const COLOR_WHITE = '#ffffff';

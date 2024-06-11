@@ -1,1 +1,45 @@
-<p>edit-team works!</p>
+<sees-lib-modal-form
+  (cancelEvent)="onCancel()"
+  (saveEvent)="onSave()"
+  title="Edit Team"
+>
+  <form [formGroup]="teamForm()">
+    <div class="row">
+      <div class="col-md-4 image-container" for="fileInput">
+        <label>
+          <input
+            #fileInput
+            type="file"
+            class="fileInput"
+            (change)="onFileSelected($event)"
+          />
+          <img
+            *ngIf="imageUrl()"
+            [src]="imageUrl()"
+            alt="Uploaded"
+            class="circular-image"
+          />
+        </label>
+        <h4 class="card-title">Profile Logo</h4>
+      </div>
+      <div class="col-md-8">
+        <sees-lib-input-field
+          label="Team Name"
+          controlName="teamName"
+          [control]="$any(teamForm().get('teamName'))"
+        ></sees-lib-input-field>
+
+        <div class="form-group input-group color-content">
+          <h4>Pick Team Color</h4>
+          <input
+            class="form-control color-picker"
+            [colorPicker]="color()"
+            (colorPickerChange)="onColorChange($event)"
+            [style.background]="color()"
+            formControlName="teamColor"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</sees-lib-modal-form>

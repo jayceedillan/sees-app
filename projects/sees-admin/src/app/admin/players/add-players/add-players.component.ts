@@ -21,6 +21,7 @@ import { Subject, combineLatest, map } from 'rxjs';
 import { UnsubscribeService } from '../../../../../../../common/UnsubscribeService';
 import {
   ADDED_SUCCESS,
+  DEFAULT_IMAGE,
   ERROR_MESSAGE,
 } from '../../../../../../../conts/app.const';
 import { NotificationService } from '../../../../../../../service/notification.service';
@@ -31,7 +32,6 @@ import {
 } from '../../../../../../sees-lib/src/public-api';
 import { SportsService } from '../../sports/service/sports.service';
 import { TeamsService } from '../../team/service/teams.service';
-import { DEFAULT_IMAGE } from '../../team/team-management.conts';
 import {
   EducationalLevel,
   Players,

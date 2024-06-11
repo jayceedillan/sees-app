@@ -21,14 +21,22 @@ import {
 } from '../../../../../../sees-lib/src/public-api';
 import { TeamsService } from '../service/teams.service';
 import { Team } from '../team-managment.interface';
+import { AddTeamComponent } from '../add-team/add-team.component';
+import { EditTeamComponent } from '../edit-team/edit-team.component';
 
 @Component({
   selector: 'sees-app-list-teams',
   standalone: true,
   templateUrl: './list-teams.component.html',
   styleUrl: './list-teams.component.scss',
-  imports: [SearchBarButtonComponent, TablesComponent, CommonModule],
   providers: [UnsubscribeService],
+  imports: [
+    SearchBarButtonComponent,
+    TablesComponent,
+    CommonModule,
+    AddTeamComponent,
+    EditTeamComponent,
+  ],
 })
 export class ListTeamsComponent implements OnInit {
   public isAddShowModal = signal<boolean>(false);
@@ -84,6 +92,22 @@ export class ListTeamsComponent implements OnInit {
   }
   public loadPerPage(currentPage: number): void {
     this.currentPage.set(currentPage);
+    this.onLoadAndSearch();
+  }
+
+  public openAddModal(): void {
+    this.isAddShowModal.set(!this.isAddShowModal());
+  }
+
+  public onCancel(): void {
+    this.openAddModal();
+  }
+
+  public onCancelEdit(): void {
+    this.isEditShowModal.set(false);
+  }
+
+  public onSaveEdit(): void {
     this.onLoadAndSearch();
   }
 }

@@ -24,6 +24,7 @@ import {
 } from '../../../../../../sees-lib/src/public-api';
 import { SportsService } from '../service/sports.service';
 import { CommonModule } from '@angular/common';
+import { Sport } from '../sport.interace';
 
 @Component({
   selector: 'sees-app-add-sports',
@@ -53,13 +54,11 @@ export class AddSportsComponent {
 
   public onSave(): void {
     this.sportForm().markAllAsTouched();
-    if (this.sportForm().valid) {
-      const sport = {
-        sportName: this.sportForm().get('sportName')?.value,
-        sportID: 0,
-      };
 
-      this.unsub.subs = this.sportsService.addTeam(sport).subscribe({
+    if (this.sportForm().valid) {
+      const sportData: Sport = { ...(this.sportForm().value as Sport) };
+
+      this.unsub.subs = this.sportsService.addTeam(sportData).subscribe({
         next: () => {
           this.sportForm().reset();
           this.notificationService.showSuccess(ADDED_SUCCESS);

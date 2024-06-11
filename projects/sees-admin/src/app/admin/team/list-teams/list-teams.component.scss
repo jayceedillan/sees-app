@@ -1,3 +1,65 @@
 :host {
   width: 100%;
 }
+
+@import "../../../../../../../shared/variable.scss";
+
+@mixin button-styles {
+  height: 1.875rem;
+  min-width: 1.875rem;
+  width: 1.875rem;
+  padding: 0;
+  font-size: 0.9375rem;
+  overflow: hidden;
+  position: relative;
+  line-height: normal;
+  background-image: linear-gradient(
+    310deg,
+    $primary-color 0%,
+    $secondary-color 100%
+  );
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  transition: all 0.15s ease;
+  border: none;
+  color: $text-color;
+  border-radius: 100%;
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+.photo {
+  img {
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+
+  .btn-icon-edit {
+    @include button-styles;
+  }
+
+  .btn-icon-edit {
+    @include button-styles;
+  }
+
+  .btn-icon-delete {
+    @include button-styles;
+    background-image: linear-gradient(
+      310deg,
+      $secondary-color 0%,
+      $secondary-color 100%
+    );
+  }
+}
