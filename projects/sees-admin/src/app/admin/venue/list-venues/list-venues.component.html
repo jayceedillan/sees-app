@@ -1,1 +1,28 @@
-<p>list-venues works!</p>
+<sees-lib-search-bar-button
+  buttonText="Add New Event"
+  (openModalEvent)="openModal()"
+  (searchEvent)="onLoadAndSearch($event)"
+></sees-lib-search-bar-button>
+<sees-lib-tables
+  [data]="VenuesData().events"
+  [columns]="columns()"
+  description="List of Venues"
+  [currentPage]="currentPage()"
+  (deleteEvent)="onDelete($event)"
+  (editEvent)="onEdit($event)"
+  [totalRowsCount]="VenuesData().totalRowsCount"
+  (pageChange)="loadPerPage($event)"
+></sees-lib-tables>
+<sees-app-add-venue
+  *ngIf="isAddShowModal()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancel()"
+></sees-app-add-venue>
+<sees-app-edit-venue
+  *ngIf="isEditShowModal()"
+  [venue]="selectedVenue()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancelEdit()"
+  (saveEvent)="onSaveEdit()"
+>
+</sees-app-edit-venue>

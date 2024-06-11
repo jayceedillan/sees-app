@@ -29,7 +29,7 @@ export const COLUMN_NAME_EVENT = [
   'startTime',
   'venueName',
 ];
-
+export const COLUMN_NAME_VENUES = ['venueName', 'address', 'capacity'];
 export const SAME_TEAM_ERROR = 'Team1 and Team2 cannot be the same in event';
 export const SAME_TIME_ERROR =
   'Start time and end time cannot be the same for teams';

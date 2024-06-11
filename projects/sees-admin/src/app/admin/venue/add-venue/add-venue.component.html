@@ -1,1 +1,22 @@
-<p>add-venue works!</p>
+<sees-lib-modal-form
+  (cancelEvent)="onCancel()"
+  (saveEvent)="onSave()"
+  title="Add Venue"
+>
+  <form [formGroup]="venueForm()">
+    <div class="row container">
+      <div class="col-md-12">
+        <sees-lib-input-field
+          label="Venue Name"
+          controlName="venueName"
+          [control]="$any(venueForm().get('venueName'))"
+        ></sees-lib-input-field>
+        <sees-lib-input-field
+          label="Address"
+          controlName="address"
+          [control]="$any(venueForm().get('address'))"
+        ></sees-lib-input-field>
+      </div>
+    </div>
+  </form>
+</sees-lib-modal-form>

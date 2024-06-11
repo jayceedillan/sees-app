@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, WritableSignal, inject, signal } from '@angular/core';
 import {
   Observable,
   debounceTime,
@@ -28,7 +28,6 @@ export class VenuesService {
   });
 
   public getAllVenues(): Observable<Venue[]> {
-    debugger;
     return this.http.get<Venue[]>(`${this.apiUrl}/Venue/getAll`);
   }
 
@@ -58,7 +57,11 @@ export class VenuesService {
       distinctUntilChanged(),
       switchMap((searchQuery: string) =>
         this.searchVenues(searchQuery, pageNumber)
-      )
+      ),
+      take(1),
+      tap((responseData) => {
+        this.venues.set(responseData);
+      })
     );
   }
 
@@ -88,5 +91,9 @@ export class VenuesService {
 
   public updateVenue(venue: Venue): Observable<Venue> {
     return this.http.put<Venue>(`${this.apiUrl}/Venue/${venue.venueID}`, venue);
+  }
+
+  public getVenues(): WritableSignal<ResponseData<Venue[]>> {
+    return this.venues;
   }
 }

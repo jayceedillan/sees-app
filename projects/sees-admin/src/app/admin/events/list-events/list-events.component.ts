@@ -46,7 +46,7 @@ export class ListEventsComponent implements OnInit {
   public isEditShowModal = signal<boolean>(false);
   public selectedEvent = signal<Events>({} as Events);
 
-  public eventsService = inject(EventsService);
+  private eventsService = inject(EventsService);
   private notificationService = inject(NotificationService);
   private formatDateService = inject(FormatDateService);
 
