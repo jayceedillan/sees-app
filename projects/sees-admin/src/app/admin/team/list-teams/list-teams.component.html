@@ -1,1 +1,15 @@
-<p>list-teams works!</p>
+<sees-lib-search-bar-button
+  buttonText="Add New Team"
+  (openModalEvent)="openModal()"
+  (searchEvent)="onLoadAndSearch($event)"
+></sees-lib-search-bar-button>
+<sees-lib-tables
+  [data]="teamData().players"
+  [columns]="columns()"
+  description="List of Teams"
+  [currentPage]="currentPage()"
+  (deleteEvent)="onDelete($event)"
+  (editEvent)="onEdit($event)"
+  [totalRowsCount]="teamData().totalRowsCount"
+  (pageChange)="loadPerPage($event)"
+></sees-lib-tables>

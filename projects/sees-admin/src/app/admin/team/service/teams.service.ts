@@ -1,4 +1,10 @@
-import { Injectable, OnDestroy, inject, signal } from '@angular/core';
+import {
+  Injectable,
+  OnDestroy,
+  WritableSignal,
+  inject,
+  signal,
+} from '@angular/core';
 import { ResponseData } from '../../Response.interface';
 import { Team } from '../team-managment.interface';
 import {
@@ -10,6 +16,7 @@ import {
   map,
   of,
   switchMap,
+  take,
   takeUntil,
   tap,
 } from 'rxjs';
@@ -61,16 +68,20 @@ export class TeamsService {
     return this.http.get<Team[]>(`${this.apiUrl}/Team/getAll`);
   }
 
-  public search(
-    query = '',
-    pageNumber: number
+  public loadTeamAndSearch(
+    pageNumber: number,
+    query = ''
   ): Observable<ResponseData<Team[]>> {
     return of(query).pipe(
       debounceTime(300),
       distinctUntilChanged(),
       switchMap((searchQuery: string) =>
         this.searchTeams(searchQuery, pageNumber)
-      )
+      ),
+      take(1),
+      tap((responseData) => {
+        this.teams.set(responseData);
+      })
     );
   }
 
@@ -88,5 +99,9 @@ export class TeamsService {
           totalCount: responseData.totalCount,
         }))
       );
+  }
+
+  public getTeams(): WritableSignal<ResponseData<Team[]>> {
+    return this.teams;
   }
 }

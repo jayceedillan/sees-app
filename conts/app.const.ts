@@ -47,3 +47,5 @@ export const COLUMN_NAME_USER = [
   'roleName',
   'teamName',
 ];
+
+export const COLUMN_NAME_TEAM = ['teamName', 'logo', 'teamColor'];
