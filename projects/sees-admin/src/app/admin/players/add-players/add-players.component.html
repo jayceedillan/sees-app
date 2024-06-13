@@ -4,7 +4,7 @@
   title="Add Player"
 >
   <form [formGroup]="playerForm()">
-    <div class="row">
+    <div class="row container">
       <div class="col-md-4">
         <div class="cam-wrapper" *ngIf="isTakePhoto()">
           <webcam
@@ -142,17 +142,14 @@
             </div>
           </div>
           <div class="col-md-6">
-            <label class="control-label" for="team">Team</label>
-            <select
-              id="team"
-              class="form-control-select"
-              formControlName="teamID"
-            >
-              <option value="" disabled selected>Please a team</option>
-              <option *ngFor="let team of teams()" [value]="team.value">
-                {{ team.name }}
-              </option>
-            </select>
+            <div class="form-group input-group">
+              <sees-lib-drop-down-list
+                label="Team"
+                selectionText="Select a Team"
+                [dataItems]="teams()"
+                [control]="$any(playerForm().get('teamID'))"
+              ></sees-lib-drop-down-list>
+            </div>
           </div>
         </div>
         <div class="row">

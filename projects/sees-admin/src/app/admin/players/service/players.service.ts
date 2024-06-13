@@ -118,4 +118,13 @@ export class PlayersService {
         })
       );
   }
+
+  public updatePlayer(
+    playersWithSports: PlayersWithSports
+  ): Observable<PlayersWithSports> {
+    return this.http.put<PlayersWithSports>(
+      `${this.apiUrl}/Players/UpdatePlayerWithSports`,
+      playersWithSports
+    );
+  }
 }

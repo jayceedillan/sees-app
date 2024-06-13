@@ -1,1 +1,215 @@
-<p>edit-players works!</p>
+<sees-lib-modal-form
+  (cancelEvent)="onCancel()"
+  (saveEvent)="onSave()"
+  title="Add Player"
+>
+  <form [formGroup]="playerForm()">
+    <div class="row container">
+      <div class="col-md-4">
+        <div class="cam-wrapper" *ngIf="isTakePhoto()">
+          <webcam
+            [height]="500"
+            [width]="500"
+            [trigger]="triggerObservable"
+            (imageCapture)="handleImage($event)"
+          ></webcam>
+          <button
+            type="button"
+            class="btn btn-capture-image"
+            (click)="captureImage()"
+          >
+            Capture Image
+          </button>
+        </div>
+        <div class="image-container" *ngIf="!isTakePhoto()">
+          <label>
+            <input
+              #fileInput
+              class="fileInput"
+              type="file"
+              (change)="onFileSelected($event)"
+            />
+            <img
+              *ngIf="imageUrl()"
+              [src]="imageUrl()"
+              alt="Uploaded"
+              class="circular-image"
+            />
+          </label>
+          <h4 class="card-title">Profile Pic</h4>
+        </div>
+        <div class="profile-button">
+          <button
+            type="button"
+            class="btn btn-upload-photo"
+            (click)="uploadPhoto()"
+          >
+            Upload Photo
+          </button>
+          <button
+            type="button"
+            class="btn btn-take-photo"
+            (click)="takePhoto()"
+          >
+            Take a Photo
+          </button>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <sees-lib-input-field
+              label="First Name"
+              controlName="firstName"
+              [control]="$any(playerForm().get('firstName'))"
+            ></sees-lib-input-field>
+          </div>
+          <div class="col-md-4">
+            <sees-lib-input-field
+              label="Middle Initial"
+              controlName="middleInitial"
+              [control]="$any(playerForm().get('middleInitial'))"
+            ></sees-lib-input-field>
+          </div>
+          <div class="col-md-4">
+            <sees-lib-input-field
+              label="Last Name"
+              controlName="lastName"
+              [control]="$any(playerForm().get('lastName'))"
+            ></sees-lib-input-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="gender">
+              <h4>Gender</h4>
+              <div class="radio-wrapper">
+                <div
+                  class="form-check form-check-radio"
+                  *ngFor="let gender of genders()"
+                >
+                  <label class="form-check-label custom-radio">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      [value]="gender"
+                      formControlName="gender"
+                    />
+                    <span class="checkmark"></span>
+                    {{ gender }}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <sees-lib-input-field
+              label="Email Address"
+              controlName="emailAddress"
+              [control]="$any(playerForm().get('emailAddress'))"
+            ></sees-lib-input-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <sees-lib-input-field
+              label="Contact No."
+              controlName="contactNo"
+              [control]="$any(playerForm().get('contactNo'))"
+            ></sees-lib-input-field>
+          </div>
+          <div class="col-md-6">
+            <label class="control-label" for="dob">Date Of Birth</label>
+            <sees-lib-date-picker
+              id="dob"
+              placeHolder="Date Of Birth"
+              [selectedDate]="selectedDate()"
+              (selectedDateChanged)="onDateChanged($event)"
+            ></sees-lib-date-picker>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group input-group">
+              <label class="control-label" for="age">Age</label>
+              <input
+                id="age"
+                type="text"
+                placeholder="Age"
+                class="form-control"
+                disabled
+                [value]="age()"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group input-group">
+              <sees-lib-drop-down-list
+                label="Team"
+                selectionText="Select a Team"
+                [selectionValue]="this.players?.team?.teamID"
+                [dataItems]="teams()"
+                [control]="$any(playerForm().get('teamID'))"
+              ></sees-lib-drop-down-list>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <sees-lib-input-field
+              type="number"
+              label="Weight"
+              controlName="weight"
+              [control]="$any(playerForm().get('weight'))"
+            ></sees-lib-input-field>
+          </div>
+          <div class="col-md-6">
+            <sees-lib-input-field
+              type="number"
+              label="Height"
+              controlName="height"
+              [control]="$any(playerForm().get('height'))"
+            ></sees-lib-input-field>
+          </div>
+        </div>
+        <div class="education">
+          <h4>Educational Level</h4>
+          <div class="radio-wrapper">
+            <div
+              class="form-check form-check-radio"
+              *ngFor="let level of educationLevels()"
+            >
+              <label class="form-check-label custom-radio">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  [value]="level.educationalLevelID"
+                  formControlName="educationalLevelID"
+                />
+                <span class="checkmark"></span>
+                {{ level.educationalLevelName }}
+              </label>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="check-box">
+          <h4>Sports</h4>
+          <div class="check-box-wrapper">
+            <div class="form-check" *ngFor="let sport of sports()">
+              <label class="form-check-label">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  [formControl]="sport.control"
+                />
+                <span class="form-check-sign"></span>
+                {{ sport.name }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</sees-lib-modal-form>

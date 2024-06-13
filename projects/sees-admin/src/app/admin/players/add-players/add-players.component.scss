@@ -28,6 +28,11 @@
   }
 }
 
+.container {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 h4 {
   color: white;
 }
@@ -233,66 +238,6 @@ textarea {
 
 .address {
   margin-top: 15px;
-}
-
-.form-select-sm {
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  padding-left: 0.5rem;
-  font-size: 0.875rem;
-  border-radius: 0.25rem;
-}
-
-.form-select {
-  display: block;
-  width: 100%;
-  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
-  -moz-padding-start: calc(0.75rem - 3px);
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #6d6f71;
-  background-color: transparent;
-  background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3e%3cpath fill="none" stroke="%23343a40" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2 5 6 6 6-6"/%3e%3c/svg%3e');
-
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 20px 18px;
-
-  border-radius: 0.375rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  border: 1px solid #15dd66;
-  appearance: none;
-}
-select {
-  word-wrap: normal;
-}
-
-select.form-select.form-select-sm option {
-  background-color: #01080c;
-  color: white;
-  padding: 10px;
-  margin-top: 15px;
-}
-
-.form-control-select {
-  display: block;
-  padding: 0.5rem 0.7rem;
-  font-size: 14px;
-  background-color: transparent;
-  background-clip: padding-box;
-  border-radius: 0.4285rem;
-  color: white;
-
-  option {
-    background-color: #01060a;
-    color: #15dd66;
-  }
-  width: 100%;
-}
-
-.row {
-  margin-left: -15px;
 }
 
 .profile-button {

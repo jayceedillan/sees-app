@@ -28,6 +28,7 @@ import { NotificationService } from '../../../../../../../service/notification.s
 import { ModalFormComponent } from '../../../../../../sees-lib/src/lib/modal-form/modal-form.component';
 import {
   DatePickerComponent,
+  DropDownListComponent,
   InputFieldComponent,
 } from '../../../../../../sees-lib/src/public-api';
 import { SportsService } from '../../sports/service/sports.service';
@@ -52,6 +53,7 @@ import { PlayersService } from '../service/players.service';
     CommonModule,
     ReactiveFormsModule,
     WebcamModule,
+    DropDownListComponent,
   ],
 })
 export class AddPlayersComponent {
@@ -141,7 +143,7 @@ export class AddPlayersComponent {
   private convertToBase64(file: File) {
     const reader = new FileReader();
     reader.onload = () => {
-      this.imageUrl.set(reader.result as string | ArrayBuffer | null);
+      this.imageUrl.set(reader.result);
     };
     reader.readAsDataURL(file);
   }
@@ -154,7 +156,7 @@ export class AddPlayersComponent {
 
     const sportIds = this.getCheckedSportsIds();
     const playersWithSports = this.createPlayersWithSports(sportIds);
-
+    debugger;
     this.unsub.subs = this.playersService
       .addPlayerWithSports(playersWithSports)
       .subscribe({

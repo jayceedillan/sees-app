@@ -29,6 +29,8 @@ import {
   TablesComponent,
 } from '../../../../../../sees-lib/src/public-api';
 import { AddPlayersComponent } from '../add-players/add-players.component';
+import { EditPlayersComponent } from '../edit-players/edit-players.component';
+import { User } from '../../user/user.interface';
 
 @Component({
   selector: 'sees-app-list-players',
@@ -42,6 +44,7 @@ import { AddPlayersComponent } from '../add-players/add-players.component';
     SearchBarButtonComponent,
     ModalFormComponent,
     AddPlayersComponent,
+    EditPlayersComponent,
   ],
 })
 export class ListPlayersComponent implements OnInit {
@@ -49,8 +52,10 @@ export class ListPlayersComponent implements OnInit {
   notificationService = inject(NotificationService);
 
   public isShowModal = signal(false);
+  public isEditShowModal = signal(false);
   public currentPage = signal(CURRENT_PAGE);
   public columns = signal(COLUMN_NAMES_PLAYER);
+  public selectedPlayer = signal<Players>({} as Players);
 
   public playersData = computed(() => {
     const playersSignal = this.playersService.getPlayers();
@@ -116,11 +121,20 @@ export class ListPlayersComponent implements OnInit {
       });
   }
 
+  public onEdit(player: { [key: string]: any }): void {
+    this.isEditShowModal.set(true);
+    this.selectedPlayer.set(player as Players);
+  }
+
   public onCancel(): void {
     this.openModal();
   }
 
   public openModal(): void {
     this.isShowModal.set(!this.isShowModal());
+  }
+
+  public onCancelEdit(): void {
+    this.isEditShowModal.set(false);
   }
 }

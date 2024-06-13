@@ -9,6 +9,7 @@
   description="List of Players"
   [currentPage]="currentPage()"
   (deleteEvent)="onDelete($event)"
+  (editEvent)="onEdit($event)"
   [totalRowsCount]="playersData().totalRowsCount"
   (pageChange)="loadPerPage($event)"
 ></sees-lib-tables>
@@ -16,3 +17,9 @@
   *ngIf="isShowModal()"
   (cancelEvent)="onCancel()"
 ></sees-app-add-players>
+<sees-app-edit-players
+  *ngIf="isEditShowModal()"
+  [players]="selectedPlayer()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancelEdit()"
+></sees-app-edit-players>
