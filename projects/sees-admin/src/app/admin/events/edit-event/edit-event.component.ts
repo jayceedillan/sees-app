@@ -53,7 +53,6 @@ export class EditEventComponent implements OnInit {
   private eventService = inject(EventsService);
   private notificationService = inject(NotificationService);
   private venueService = inject(VenuesService);
-  private formatDateService = inject(FormatDateService);
   private formBuilder = inject(FormBuilder);
 
   public eventForm = signal<FormGroup>(this.formBuilder.group({}));
@@ -86,7 +85,6 @@ export class EditEventComponent implements OnInit {
   }
 
   private initializeForm(): void {
-    debugger;
     this.eventForm.set(
       this.formBuilder.group({
         eventCode: [this.event?.eventCode, Validators.required],

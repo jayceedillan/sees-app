@@ -30,8 +30,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
-
   overflow-x: auto;
+
   h4 {
     text-transform: uppercase;
     color: #15dd66;
@@ -105,6 +105,27 @@
   border-bottom: 1px solid #15dd66;
   box-sizing: border-box;
   color: white;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  // position: relative;
+
+  // &[title]:hover:after {
+  //   content: attr(title);
+  //   position: absolute;
+  //   background: rgba(0, 0, 0, 0.8);
+  //   color: white;
+  //   padding: 5px;
+  //   border-radius: 3px;
+  //   white-space: normal;
+  //   overflow: visible;
+  //   z-index: 9999;
+  //   // Adjust tooltip position as needed
+  //   top: 0;
+  //   left: 100%;
+  //   transform: translateX(-50%);
+  // }
+
   .buttons {
     display: flex;
     justify-content: center;
@@ -129,7 +150,7 @@
       background-image: linear-gradient(310deg, #ffc107 0%, #ffc107 100%);
     }
 
-    .btn-icon-ligh-bulb {
+    .btn-icon-light-bulb {
       @include button-styles;
       background-image: linear-gradient(310deg, #dc3545 0%, #dc3545 100%);
     }
@@ -137,7 +158,6 @@
 }
 
 .table-header {
-  background-color: transparent;
   text-align: left;
   color: white;
   text-transform: uppercase;
@@ -170,6 +190,9 @@
     justify-content: space-between;
     padding: 10px 0;
     border: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .table-cell::before {

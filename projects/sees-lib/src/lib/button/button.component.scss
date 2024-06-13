@@ -4,9 +4,9 @@
     --custom-bg,
     linear-gradient(310deg, #590f02 0%, #590f02 100%)
   );
-
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
   color: var(--textColor, #fff);
-  border-radius: 4px;
   padding: 10px var(--padding, 20px);
   font-weight: bold;
   text-align: center;

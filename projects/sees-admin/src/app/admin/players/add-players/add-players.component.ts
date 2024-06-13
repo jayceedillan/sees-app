@@ -88,7 +88,7 @@ export class AddPlayersComponent {
   }
 
   private loadDatas(): void {
-    this.unsub.subs = combineLatest(
+    this.unsub.subs = combineLatest([
       this.teamService
         .getAllTeams()
         .pipe(
@@ -105,8 +105,8 @@ export class AddPlayersComponent {
           }))
         )
       ),
-      this.playersService.loadEducationalLevel()
-    ).subscribe(([teams, sports, educationLevels]) => {
+      this.playersService.loadEducationalLevel(),
+    ]).subscribe(([teams, sports, educationLevels]) => {
       this.teams.set(teams);
       this.sports.set(sports);
       this.educationLevels.set(educationLevels);

@@ -11,14 +11,19 @@
     *ngIf="control?.invalid && (control?.dirty || control?.touched)"
     class="text-danger"
   >
-    <span class="text-danger" *ngIf="control?.errors?.['required']"
-      >{{ label }} is required.</span
-    >
-    <span class="text-danger" *ngIf="control?.errors?.['email']">
+    <span *ngIf="control?.errors?.['required']">{{ label }} is required.</span>
+    <span *ngIf="control?.errors?.['email']">
       Please enter a valid email address.
     </span>
-    <span class="text-danger" *ngIf="control?.errors?.['min']">
+    <span *ngIf="control?.errors?.['min']">
       Score must be greater than or equal to 0
+    </span>
+    <span *ngIf="control?.errors?.['minlength']" class="text-danger">
+      Password must be at least 6 characters long
+    </span>
+    <span *ngIf="control?.errors?.['invalidPassword']" class="text-danger">
+      Password must contain at least one uppercase letter, one numeric digit,
+      and one special character
     </span>
   </span>
 </div>

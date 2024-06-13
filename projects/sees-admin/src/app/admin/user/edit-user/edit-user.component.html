@@ -1,1 +1,169 @@
-<p>edit-user works!</p>
+<sees-lib-modal-form
+  (cancelEvent)="onCancel()"
+  (saveEvent)="onSave()"
+  [disabled]="userForm().invalid"
+  title="Add User Information"
+>
+  <form [formGroup]="userForm()">
+    <div class="row container">
+      <div class="col-md-4">
+        <sees-lib-input-field
+          label="First Name"
+          controlName="firstName"
+          [control]="$any(userForm().get('firstName'))"
+        ></sees-lib-input-field>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group input-group">
+          <sees-lib-input-field
+            label="Middle Name"
+            controlName="middleName"
+            [control]="$any(userForm().get('middleName'))"
+          ></sees-lib-input-field>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group input-group">
+          <sees-lib-input-field
+            label="Last Name"
+            controlName="lastName"
+            [control]="$any(userForm().get('lastName'))"
+          ></sees-lib-input-field>
+        </div>
+      </div>
+    </div>
+    <div class="row container">
+      <div class="col-md-4">
+        <div class="education">
+          <h4>Gender</h4>
+          <div class="radio-wrapper">
+            <div
+              class="form-check form-check-radio"
+              *ngFor="let gender of genders()"
+            >
+              <label class="form-check-label custom-radio">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  [value]="gender"
+                  formControlName="gender"
+                />
+                <span class="checkmark"></span>
+                {{ gender }}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="form-group input-group">
+          <sees-lib-input-field
+            type="email"
+            label="Email Address"
+            controlName="emailAddress"
+            [control]="$any(userForm().get('emailAddress'))"
+          ></sees-lib-input-field>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group input-group">
+          <sees-lib-input-field
+            label="Contact No"
+            controlName="contactNo"
+            [control]="$any(userForm().get('contactNo'))"
+          ></sees-lib-input-field>
+        </div>
+        <div class="education">
+          <h4>Educational Level</h4>
+          <div class="radio-wrapper">
+            <div
+              class="form-check form-check-radio"
+              *ngFor="let level of educationLevels()"
+            >
+              <label class="form-check-label custom-radio">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  [value]="level.educationalLevelID"
+                  formControlName="educationalLevelID"
+                />
+                <span class="checkmark"></span>
+                {{ level.educationalLevelName }}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-list">
+          <div class="form-group input-group">
+            <sees-lib-drop-down-list
+              label="Designation"
+              selectionText="Select a Designation"
+              [selectionValue]="this.user?.designation?.designationID"
+              [dataItems]="designations()"
+              [control]="$any(userForm().get('designationID'))"
+            ></sees-lib-drop-down-list>
+          </div>
+        </div>
+        <div class="education">
+          <h4>Roles</h4>
+          <div class="radio-wrapper">
+            <div
+              class="form-check form-check-radio"
+              *ngFor="let role of roles()"
+            >
+              <label class="form-check-label custom-radio">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  [value]="role.roleID"
+                  formControlName="roleID"
+                  (change)="handleRadioChange(role.roleID)"
+                />
+                <span class="checkmark"></span>
+                {{ role.roleName }}
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="dropdown-list" *ngIf="isShowTeam()">
+          <div class="form-group input-group">
+            <sees-lib-drop-down-list
+              label="Team"
+              selectionText="Select a Team"
+              [dataItems]="teams()"
+              [control]="$any(userForm().get('teamID'))"
+            ></sees-lib-drop-down-list>
+          </div>
+        </div>
+        <div class="form-group input-group user-container">
+          <sees-lib-input-field
+            label="User Name"
+            controlName="userName"
+            [control]="$any(userForm().get('userName'))"
+          ></sees-lib-input-field>
+        </div>
+      </div>
+    </div>
+    <div class="row container">
+      <div class="col-md-6">
+        <sees-lib-input-field
+          label="Password"
+          type="password"
+          controlName="password"
+          [control]="$any(userForm().get('password'))"
+        ></sees-lib-input-field>
+      </div>
+      <div class="col-md-6">
+        <sees-lib-input-field
+          type="password"
+          label="Confirm Password"
+          controlName="confirmPassword"
+          [control]="$any(userForm().get('confirmPassword'))"
+        ></sees-lib-input-field>
+        <span *ngIf="userForm().hasError('missmatch')" class="text-danger">
+          passwords do not match
+        </span>
+      </div>
+    </div>
+  </form>
+</sees-lib-modal-form>

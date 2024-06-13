@@ -1,0 +1,19 @@
+<label class="control-label" [for]="label"> {{ label }} </label>
+<div class="custom-select">
+  <select
+    [(ngModel)]="selectionValue"
+    (change)="onSelectionChange()"
+    [formControl]="control!"
+  >
+    <option *ngFor="let data of dataItems" [value]="data.value">
+      {{ data.name }}
+    </option>
+  </select>
+  <div class="select-arrow"></div>
+</div>
+<span
+  *ngIf="control?.invalid && (control?.dirty || control?.touched)"
+  class="text-danger"
+>
+  <span *ngIf="control?.errors?.['required']">{{ label }} is required.</span>
+</span>

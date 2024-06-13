@@ -22,6 +22,7 @@ import { AddSportsComponent } from '../add-sports/add-sports.component';
 import { SportsService } from '../service/sports.service';
 import { Sport } from '../sport.interace';
 import { EditSportsComponent } from '../edit-sports/edit-sports.component';
+import { User } from '../../user/user.interface';
 
 @Component({
   selector: 'sees-app-list-sports',

@@ -1,7 +1,16 @@
-import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
-import { PaginationComponent } from '../pagination/pagination.component';
 import { CommonModule } from '@angular/common';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  Renderer2,
+  signal,
+} from '@angular/core';
+
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 type dynamic = { [key: string]: any };
 
@@ -27,6 +36,21 @@ export class TablesComponent {
 
   public isConfirmShowModal = signal<boolean>(false);
   private currentSelected = signal<Record<string, any>>({});
+
+  constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+
+  // ngAfterViewInit() {
+  //   const tableCells =
+  //     this.elementRef.nativeElement.querySelectorAll('.table-cell');
+  //   tableCells.forEach((cell: HTMLElement) => {
+  //     const longTextElement = cell.querySelector('.show-long-text');
+  //     if (longTextElement) {
+  //       if (longTextElement.scrollWidth > longTextElement.clientWidth) {
+  //         this.renderer.addClass(longTextElement, 'show-tooltip');
+  //       }
+  //     }
+  //   });
+  // }
 
   public convertCamelCaseToSpacedString(input: string): string {
     return input

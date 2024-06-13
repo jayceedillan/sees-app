@@ -1,5 +1,5 @@
-import { EducationalLevel } from 'src/app/players/players.interface';
-import { Team } from 'src/app/team-management/team-managment.interface';
+import { EducationalLevel } from '../players/players.interface';
+import { Team } from '../team/team-managment.interface';
 
 export interface User {
   userID: number;
@@ -21,6 +21,7 @@ export interface User {
   role: Role;
   roleName: string;
   team: Team;
+  teamID?: number;
   teamName: string;
 }
 

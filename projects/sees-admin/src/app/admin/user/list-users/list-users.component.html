@@ -1,1 +1,26 @@
-<p>list-users works!</p>
+<sees-lib-search-bar-button
+  buttonText="Add New User"
+  (openModalEvent)="openModal()"
+  (searchEvent)="onLoadAndSearch($event)"
+></sees-lib-search-bar-button>
+<sees-lib-tables
+  [data]="userData().players"
+  [columns]="columns()"
+  description="List of Users"
+  [currentPage]="currentPage()"
+  (deleteEvent)="onDelete($event)"
+  (editEvent)="onEdit($event)"
+  [totalRowsCount]="userData().totalRowsCount"
+  (pageChange)="loadPerPage($event)"
+></sees-lib-tables>
+<sees-app-add-user
+  *ngIf="isAddShowModal()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onAddCancel()"
+></sees-app-add-user>
+<sees-app-edit-user
+  *ngIf="isEditShowModal()"
+  [user]="selectedUser()"
+  [currentPage]="currentPage()"
+  (cancelEvent)="onCancelEdit()"
+></sees-app-edit-user>
