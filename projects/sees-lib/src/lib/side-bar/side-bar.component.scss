@@ -5,7 +5,7 @@
 .side-bar {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(rgb(6, 54, 138), #3358f4);
+  background-image: linear-gradient(#04081c, #172b90);
   padding: 10px;
   width: 230px;
   position: relative;
@@ -56,8 +56,32 @@
       cursor: pointer;
       position: relative;
 
+      .menu-link {
+        margin: 10px 2px 0;
+        border-radius: 30px;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        position: relative;
+        cursor: pointer;
+        line-height: 1.95rem;
+        color: white;
+        width: 191px;
+        border-bottom-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        background-image: linear-gradient(#04081c, #172b90);
+        box-shadow: 0px 5px 5px 0 rgb(83, 180, 225);
+      }
       &:hover {
-        background-color: #ddd;
+        background-color: transparent;
+
+        .menu-link {
+          background-image: linear-gradient(310deg, #15dd66 0%, #15dd66 100%);
+          box-shadow: 0px 8px 5px 0 white;
+        }
       }
 
       .nested-menu {
@@ -65,17 +89,46 @@
         position: absolute;
         left: 100%;
         top: 0;
-        background-color: #e8e8e8;
-        padding: 10px;
+        width: 140px;
+        background-image: linear-gradient(#fff, #2a3fa9);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
         z-index: 1000;
 
+        .menu-nested-link {
+          margin: 5px 0 0;
+          border-radius: 30px;
+          text-align: center;
+          display: block;
+          text-decoration: none;
+          position: relative;
+          cursor: pointer;
+          line-height: 1.95rem;
+          color: white;
+          width: 120px;
+          border-bottom-left-radius: 10px;
+          border-top-right-radius: 10px;
+          padding: 10px 20px;
+          font-size: 14px;
+          font-weight: bold;
+          background-image: linear-gradient(#04081c, #172b90);
+          box-shadow: 0px 5px 5px 0 rgb(83, 180, 225);
+        }
         li {
           padding: 5px 10px;
           white-space: nowrap;
 
           &:hover {
-            background-color: #ccc;
+            background-color: transparent;
+
+            .menu-nested-link {
+              background-image: linear-gradient(
+                310deg,
+                #15dd66 0%,
+                #15dd66 100%
+              );
+              box-shadow: 0px 8px 5px 0 white;
+            }
           }
         }
       }

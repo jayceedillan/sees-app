@@ -1,0 +1,134 @@
+:host {
+  width: 100%;
+}
+ul.rtabs {
+  text-align: left;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  padding-left: 40px;
+  list-style-type: none;
+
+  li {
+    margin: 0;
+    margin-right: -1px;
+    padding: 0;
+    display: inline;
+
+    a {
+      margin: 10px 2px 0;
+      border-radius: 30px;
+      text-align: center;
+      display: inline-block;
+      text-decoration: none;
+      position: relative;
+      cursor: pointer;
+      line-height: 1.95rem;
+      color: white;
+      width: 191px;
+      border-bottom-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      background-image: linear-gradient(310deg, #15dd66 0%, #15dd66 100%);
+
+      box-shadow: 0px 5px 5px 0 rgb(83, 180, 225);
+
+      &:link,
+      &:visited {
+        background-image: linear-gradient(#04081c, #172b90);
+      }
+
+      &:hover {
+        background-image: linear-gradient(#04081c, #172b90);
+        box-shadow: 0px 8px 5px 0 white;
+      }
+    }
+
+    &.selected a {
+      background-image: linear-gradient(#04081c, #172b90);
+
+      z-index: 3;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+div.panel-container {
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  box-shadow: 0 0 8px #ccc;
+  background-color: white;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+  margin-top: -1px;
+
+  > div {
+    padding: 30px 26px;
+
+    display: block;
+    margin: 0px;
+
+    &.inactive {
+      display: none;
+    }
+  }
+}
+
+/* loading image before ajax content is retrieved. Only applicable when Ajax is used. */
+div.ajaxLoading {
+  //   background: transparent url(loading.gif) no-repeat center center;
+  height: 150px;
+  width: 20px;
+  font-size: 0;
+  padding: 0;
+  margin: 0 auto;
+}
+
+/* For mobiles */
+@media only screen and (max-width: 560px) {
+  ul.rtabs {
+    box-sizing: border-box;
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    min-width: 260px;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      box-sizing: border-box;
+      margin-right: 0;
+      width: 50%; /* set it to 100% for one column, 33.33% for three-column */
+
+      &:last-child:nth-child(odd) {
+        width: 100%;
+      }
+
+      a {
+        border: none;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        display: block;
+        padding: 0;
+        text-align: center;
+        border-radius: 0;
+      }
+
+      &.selected a {
+        background-color: #fff;
+      }
+    }
+  }
+
+  div.panel-container {
+    border-radius: 0;
+    min-width: 260px;
+    box-sizing: border-box;
+  }
+}

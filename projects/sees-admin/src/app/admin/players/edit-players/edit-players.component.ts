@@ -195,7 +195,7 @@ export class EditPlayersComponent {
       this.players?.playerID,
       sportIds
     );
-    debugger;
+
     this.unsub.subs = this.playersService
       .updatePlayer(playersWithSports)
       .subscribe({

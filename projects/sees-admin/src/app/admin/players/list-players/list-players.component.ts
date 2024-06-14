@@ -30,7 +30,6 @@ import {
 } from '../../../../../../sees-lib/src/public-api';
 import { AddPlayersComponent } from '../add-players/add-players.component';
 import { EditPlayersComponent } from '../edit-players/edit-players.component';
-import { User } from '../../user/user.interface';
 
 @Component({
   selector: 'sees-app-list-players',

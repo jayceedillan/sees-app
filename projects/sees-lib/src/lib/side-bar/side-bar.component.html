@@ -11,9 +11,20 @@
   </div>
   <ul>
     <li *ngFor="let item of menu" class="menu-item">
-      {{ item.name }}
+      <a class="menu-link" [routerLink]="item.link" routerLinkActive="active">
+        {{ item.name }}</a
+      >
       <ul class="nested-menu" *ngIf="item.children">
-        <li *ngFor="let child of item.children">{{ child.name }}</li>
+        <li *ngFor="let child of item.children">
+          <a
+            class="menu-nested-link"
+            [routerLink]="child.link"
+            routerLinkActive="active"
+            routerLinkActive="active"
+          >
+            {{ child.name }}</a
+          >
+        </li>
       </ul>
     </li>
   </ul>

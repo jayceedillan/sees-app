@@ -29,11 +29,18 @@ export class AppComponent {
 
   public menu = [
     {
-      name: 'Menu Item 1',
-      children: [{ name: 'Submenu Item 1' }, { name: 'Submenu Item 2' }],
+      name: 'Management',
+      children: [
+        { name: 'Event', link: 'admin/list-events' },
+        { name: 'Venue', link: 'admin/list-venues' },
+        { name: 'Sport', link: 'admin/list-sports' },
+        { name: 'Team', link: 'admin/list-teams' },
+        { name: 'Player', link: 'admin/list-players' },
+      ],
     },
-    { name: 'Menu Item 2' },
-    { name: 'Menu Item 3' },
+    { name: 'Over All Standing', link: 'standing' },
+    { name: 'Schedule Generation' },
+    { name: 'Tabulator' },
   ];
 
   players = [
