@@ -1,0 +1,13 @@
+.medal {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+
+  i {
+    font-size: 50px;
+  }
+
+  span {
+    font-size: 16px;
+  }
+}

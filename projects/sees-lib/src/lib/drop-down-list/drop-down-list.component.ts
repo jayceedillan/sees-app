@@ -15,6 +15,8 @@ export class DropDownListComponent {
   @Input() control?: FormControl;
   @Input() label?: string;
   @Input() selectionValue?: number;
+  @Input() useFormControl: boolean = true;
+  @Input() selectionText: string = 'Select an option';
   @Output() selectionChangedValue = new EventEmitter<number>();
 
   public onSelectionChange(): void {

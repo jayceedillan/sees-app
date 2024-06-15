@@ -17,3 +17,4 @@ export * from './lib/input-field/input-field.component';
 export * from './lib/date-picker/date-picker.component';
 export * from './lib/time-picker/time-picker.component';
 export * from './lib/drop-down-list/drop-down-list.component';
+export * from './lib/medal-trophy/medal-trophy.component';

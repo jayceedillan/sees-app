@@ -1,0 +1,237 @@
+@import "../../../../../../shared/variable.scss";
+
+@mixin button-styles {
+  height: 1.875rem;
+  min-width: 1.875rem;
+  width: 1.875rem;
+  padding: 0;
+  font-size: 0.9375rem;
+  overflow: hidden;
+  position: relative;
+  line-height: normal;
+  background-image: linear-gradient(
+    310deg,
+    $primary-color 0%,
+    $secondary-color 100%
+  );
+  background-size: 210% 210%;
+  background-position: 100% 0;
+  transition: all 0.15s ease;
+  border: none;
+  color: $text-color;
+  border-radius: 100%;
+  &:hover {
+    color: $primary-color;
+    background-color: $light_black;
+  }
+}
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-x: auto;
+
+  h4 {
+    text-transform: uppercase;
+    color: #15dd66;
+    box-shadow: 5px 5px 5px 0px rgb(245 243 243);
+    width: 140px;
+    margin-bottom: 10px;
+  }
+
+  .table-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: calc(100vh - 300px);
+    margin-top: 10px;
+    max-height: calc(100vh - 445px);
+  }
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: white;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(310deg, #15dd66 0%, #15dd66 100%);
+    border-radius: 5px;
+  }
+}
+
+.table-row {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 1100px;
+  transition: background-color 0.5s;
+  height: 85px;
+
+  &:nth-child(2) {
+    margin-top: 10px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: bold;
+
+    img {
+      display: inline-block;
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      vertical-align: middle;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+  }
+
+  &:hover {
+    background-color: #590f02;
+  }
+
+  .color-box {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 5px 0 rgb(1 255 14);
+  }
+}
+
+.table-header,
+.table-cell {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  padding: 10px;
+  border-bottom: 1px solid #15dd66;
+  box-sizing: border-box;
+  color: white;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  justify-content: center;
+
+  &:first-child {
+    justify-content: flex-start;
+  }
+
+  span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    border-radius: 100%;
+    height: 60px;
+    font-size: 40px;
+    font-family: "Digital Display", monospace;
+    color: rgb(255, 217, 0);
+    box-shadow: white 5px 5px 5px 0px;
+  }
+  .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    .btn-icon-edit {
+      @include button-styles;
+    }
+
+    .btn-icon-delete {
+      @include button-styles;
+      background-image: linear-gradient(
+        310deg,
+        $secondary-color 0%,
+        $secondary-color 100%
+      );
+    }
+
+    .btn-icon-ban {
+      @include button-styles;
+      background-image: linear-gradient(310deg, #ffc107 0%, #ffc107 100%);
+    }
+
+    .btn-icon-light-bulb {
+      @include button-styles;
+      background-image: linear-gradient(310deg, #dc3545 0%, #dc3545 100%);
+    }
+  }
+}
+
+.table-header {
+  text-align: left;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  position: sticky;
+  z-index: 1;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(#04081c, #172b90);
+
+  &:first-child {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    justify-content: flex-start;
+    font-size: 24px;
+  }
+
+  &:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: unset;
+    // border-bottom: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .table-container {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    overflow-x: hidden;
+  }
+  .table-row {
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .table-header {
+    display: none;
+  }
+
+  .table-cell {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .table-cell::before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+  }
+
+  .table-cell + .table-cell {
+    border-top: 1px solid #ccc;
+  }
+}

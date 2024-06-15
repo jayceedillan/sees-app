@@ -1,1 +1,52 @@
-<p>over-all-standing works!</p>
+<div class="table-container">
+  <div class="table-wrapper">
+    <div class="table-row">
+      <div class="table-header">Delegation</div>
+      <div class="table-header">
+        <sees-lib-medal-trophy
+          [medalColor]="medalColor.GOLD"
+          medalName="Gold"
+        ></sees-lib-medal-trophy>
+      </div>
+      <div class="table-header">
+        <sees-lib-medal-trophy
+          [medalColor]="medalColor.ZILVER"
+          medalName="Zilver"
+        ></sees-lib-medal-trophy>
+      </div>
+      <div class="table-header">
+        <sees-lib-medal-trophy
+          [medalColor]="medalColor.BRONZE"
+          medalName="Bronze"
+        ></sees-lib-medal-trophy>
+      </div>
+    </div>
+    <div
+      class="table-row"
+      *ngFor="let teamOverallStanding of teamOverallStandings()"
+      [ngStyle]="{
+        'background-image':
+          'linear-gradient(' + teamOverallStanding.team.teamColor + ', #0e0f10)'
+      }"
+    >
+      <div class="table-cell">
+        <div class="logo">
+          <img
+            [src]="teamOverallStanding.team.logo"
+            [alt]="teamOverallStanding.team.teamName"
+          />
+          <div>{{ teamOverallStanding.team.teamName }}</div>
+        </div>
+      </div>
+      <div class="table-cell" data-label="Gold">
+        <span>{{ teamOverallStanding.gold }}</span>
+      </div>
+      <div class="table-cell" data-label="Silver">
+        <span>{{ teamOverallStanding.zilver }}</span>
+      </div>
+      <div class="table-cell" data-label="Bronze">
+        <span>{{ teamOverallStanding.bronze }}</span>
+      </div>
+    </div>
+  </div>
+</div>

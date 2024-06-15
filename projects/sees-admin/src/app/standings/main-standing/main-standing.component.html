@@ -1,19 +1,18 @@
 <ul id="tabs1" class="rtabs">
-  <li *ngFor="let tab of tabs" [class.selected]="selectedTab === tab.id">
+  <li *ngFor="let tab of tabs()" [class.selected]="selectedTab() === tab.id">
     <a (click)="selectTab(tab.id)">{{ tab.title }}</a>
   </li>
 </ul>
 <div class="panel-container">
   <div
-    *ngFor="let tab of tabs"
+    *ngFor="let tab of tabs()"
     [id]="tab.id"
-    [class.inactive]="selectedTab !== tab.id"
-    [style.display]="selectedTab === tab.id ? 'block' : 'none'"
+    [class.inactive]="selectedTab() !== tab.id"
+    [style.display]="selectedTab() === tab.id ? 'block' : 'none'"
   >
-    <h2>{{ tab.title }}</h2>
-
-    <ng-container *ngFor="let tab of tabs">
-      <ng-container *ngIf="selectedTab === tab.id">
+    <h1>{{ tab.title }}</h1>
+    <ng-container *ngFor="let tab of tabs()">
+      <ng-container *ngIf="selectedTab() === tab.id">
         <ng-container *ngComponentOutlet="tab.component"></ng-container>
       </ng-container>
     </ng-container>

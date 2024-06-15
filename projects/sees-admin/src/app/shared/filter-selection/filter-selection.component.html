@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-3">
+    <sees-lib-drop-down-list
+      #eventsDropdown
+      label="Team"
+      selectionText="Select a Events"
+      [dataItems]="events()"
+      [useFormControl]="false"
+      (selectionChangedValue)="onChangedEvent($event)"
+    ></sees-lib-drop-down-list>
+  </div>
+  <div class="col-md-3">
+    <sees-lib-date-picker
+      #selectedDate
+      placeHolder="Date"
+    ></sees-lib-date-picker>
+  </div>
+  <div class="col-md-2">
+    <sees-lib-drop-down-list
+      label="Sport"
+      selectionText="Select a Sports"
+      [dataItems]="sports()"
+      [useFormControl]="false"
+      (selectionChangedValue)="onChangedSport($event)"
+    ></sees-lib-drop-down-list>
+    <sees-lib-button *ngIf="sportId() && eventId() && currentDate()">
+      <i class="fas fa-thumbs-up"></i>
+    </sees-lib-button>
+  </div>
+</div>
