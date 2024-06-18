@@ -1,1 +1,7 @@
-<sees-app-filter-selection></sees-app-filter-selection>
+<sees-app-filter-selection
+  [isShowDatePicker]="false"
+  (selectedChangedEvent)="onSelectedChangedEvent($event)"
+  (selectedChangedSport)="onSelectedChangedSport($event)"
+></sees-app-filter-selection>
+
+{{ teamStandings() | json }}

@@ -39,25 +39,7 @@ export class AppComponent {
       ],
     },
     { name: 'Over All Standing', link: 'standing' },
-    { name: 'Schedule Generation' },
+    { name: 'Schedule Generation', link: 'schedule/generation' },
     { name: 'Tabulator' },
-  ];
-
-  players = [
-    {
-      name: 'Jessie',
-      middleInitial: 'P.',
-      lastName: 'Furigay',
-      birthday: '11/16/1977',
-      contactNo: '123-456-7890',
-      email: 'jessie@example.com',
-      age: 46,
-      gender: 'Male',
-      height: '6ft',
-      weight: '180lbs',
-      teamName: 'Team A',
-      level: 'Pro',
-    },
-    // Add more player objects here
   ];
 }

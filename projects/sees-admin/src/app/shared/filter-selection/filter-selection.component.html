@@ -15,7 +15,7 @@
       (selectionChangedValue)="onChangedEvent($event)"
     ></sees-lib-drop-down-list> -->
   </div>
-  <div class="col-md-3 date-picker">
+  <div class="col-md-3 date-picker" *ngIf="isShowDatePicker">
     <sees-lib-custom-date-picker></sees-lib-custom-date-picker>
 
     <!-- <sees-lib-date-picker

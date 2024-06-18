@@ -1,0 +1,70 @@
+<div class="selection-filter">
+  <sees-app-filter-selection
+    (selectedChangedEvent)="onSelectedChangedEvent($event)"
+    (selectedChangedSport)="onSelectedChangedSport($event)"
+    (dateChanged)="onDateChanged($event)"
+  ></sees-app-filter-selection>
+</div>
+
+<div class="table-container">
+  <div class="table-wrapper">
+    <div class="table-row">
+      <div class="table-header">TEAM A</div>
+      <div class="table-header">TEAM B</div>
+      <div class="table-header">START TIME</div>
+      <div class="table-header">VENUE</div>
+      <div class="table-header">ACTION</div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-time-picker></sees-lib-time-picker>
+      </div>
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-button> <i class="fas fa fa-times"></i></sees-lib-button>
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-time-picker></sees-lib-time-picker>
+      </div>
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-button> <i class="fas fa fa-times"></i></sees-lib-button>
+      </div>
+    </div>
+    <div class="table-row">
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-time-picker></sees-lib-time-picker>
+      </div>
+      <div class="table-cell">
+        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+      </div>
+      <div class="table-cell">
+        <sees-lib-button> <i class="fas fa fa-times"></i></sees-lib-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { ListUsersComponent } from './admin/user/list-users/list-users.component
 import { ListVenuesComponent } from './admin/venue/list-venues/list-venues.component';
 import { ListPlayersComponent } from './admin/players/list-players/list-players.component';
 import { MainStandingComponent } from './standings/main-standing/main-standing.component';
+import { ScheduleGenerationComponent } from './schedule-generation/schedule-generation.component';
 
 export const routes: Routes = [
   {
@@ -35,6 +36,10 @@ export const routes: Routes = [
   {
     path: 'standing',
     component: MainStandingComponent,
+  },
+  {
+    path: 'schedule/generation',
+    component: ScheduleGenerationComponent,
   },
 ];
 
