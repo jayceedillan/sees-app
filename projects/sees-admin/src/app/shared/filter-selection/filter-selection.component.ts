@@ -15,6 +15,7 @@ import { combineLatest, map } from 'rxjs';
 import { NamedValue } from '../../admin/namedValue.interface';
 import {
   ButtonComponent,
+  CustomDatePickerComponent,
   DatePickerComponent,
   DropDownListComponent,
   DropDownSearchComponent,
@@ -33,6 +34,7 @@ import { CommonModule } from '@angular/common';
     ButtonComponent,
     CommonModule,
     DropDownSearchComponent,
+    CustomDatePickerComponent,
   ],
 })
 export class FilterSelectionComponent implements OnInit {

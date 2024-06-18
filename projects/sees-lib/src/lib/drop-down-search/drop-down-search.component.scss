@@ -1,6 +1,10 @@
+:host {
+  width: 100%;
+}
+
 .dropdown-container {
   width: 100%;
-  margin: 20px;
+  // margin: 20px;
   position: relative;
 
   .dropdown-selected {

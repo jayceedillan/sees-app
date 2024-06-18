@@ -1,0 +1,159 @@
+:host {
+  width: 100%;
+}
+.custom-date-picker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  .input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input {
+      padding: 8px 30px 8px 8px;
+      border: 1px solid #15dd66;
+      cursor: pointer;
+      width: 100%;
+      background-color: transparent;
+      border-radius: 5px;
+      color: #fff;
+      height: 40px;
+    }
+
+    i {
+      position: absolute;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      color: white;
+      &.fa-calendar-alt,
+      &.fa-times-circle {
+        color: #fff;
+      }
+    }
+  }
+
+  .date-picker {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 266px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
+    .year-wrapper {
+      background-image: linear-gradient(#04081c, #172b90);
+      box-shadow: 0px 5px 5px 0 rgb(83, 180, 225);
+      color: #fff;
+    }
+
+    .calendar,
+    .years-grid {
+      width: 100%;
+    }
+
+    .calendar {
+      .header,
+      .year-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #ccc;
+
+        span {
+          cursor: pointer;
+          box-shadow: 0px 3px 2px 0px rgb(7 14 48);
+          padding: 5px;
+          border-radius: 4px;
+        }
+
+        .nav {
+          font-size: 16px;
+        }
+      }
+
+      .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1px;
+        color: white;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        background-image: linear-gradient(#04081c, #172b90);
+        box-shadow: 0px 5px 5px 0 rgb(83, 180, 225);
+
+        .day {
+          padding: 10px;
+          text-align: center;
+          cursor: pointer;
+
+          &.disabled {
+            color: #ccc;
+            cursor: default;
+          }
+
+          &.selected,
+          &.today {
+            background-image: linear-gradient(310deg, #15dd66 0%, #15dd66 100%);
+            box-shadow: 0 1px 5px 0 white;
+            border-radius: 100%;
+          }
+        }
+      }
+    }
+
+    .years-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      padding: 10px;
+
+      .year {
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 1px solid white;
+        border-top-right-radius: 12px;
+        border: 1px solid white;
+        border-bottom-left-radius: 10px;
+
+        &.selected {
+          background-color: #007bff;
+          color: #fff;
+        }
+      }
+    }
+
+    .year-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-bottom: 1px solid #ccc;
+      .previous {
+        background-image: linear-gradient(310deg, #e2e1e6 0%, #e2e1e6 100%);
+        color: black;
+      }
+
+      .next {
+        background-image: linear-gradient(310deg, #337ab7 0%, #337ab7 100%);
+      }
+      span {
+        cursor: pointer;
+        box-shadow: 0px 3px 2px 0px rgb(7 14 48);
+        padding: 6px;
+        border-bottom-right-radius: 10px;
+        border-top-left-radius: 10px;
+      }
+    }
+  }
+}

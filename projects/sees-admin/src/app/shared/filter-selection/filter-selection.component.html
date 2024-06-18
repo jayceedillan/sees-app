@@ -15,13 +15,15 @@
       (selectionChangedValue)="onChangedEvent($event)"
     ></sees-lib-drop-down-list> -->
   </div>
-  <div class="col-md-3">
-    <sees-lib-date-picker
+  <div class="col-md-3 date-picker">
+    <sees-lib-custom-date-picker></sees-lib-custom-date-picker>
+
+    <!-- <sees-lib-date-picker
       #selectedDate
       placeHolder="Date"
-    ></sees-lib-date-picker>
+    ></sees-lib-date-picker> -->
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <sees-lib-drop-down-search
       [dropDownItems]="sports()"
       selectionText="Select a Sports"
@@ -35,7 +37,12 @@
       [useFormControl]="false"
       (selectionChangedValue)="onChangedSport($event)"
     ></sees-lib-drop-down-list> -->
-    <sees-lib-button *ngIf="sportId() && eventId() && currentDate()">
+  </div>
+  <div class="col-md-3">
+    <sees-lib-button
+      *ngIf="sportId() && eventId() && currentDate()"
+      text="Load"
+    >
       <i class="fas fa-thumbs-up"></i>
     </sees-lib-button>
   </div>

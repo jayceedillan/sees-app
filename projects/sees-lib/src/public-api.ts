@@ -19,3 +19,4 @@ export * from './lib/time-picker/time-picker.component';
 export * from './lib/drop-down-list/drop-down-list.component';
 export * from './lib/medal-trophy/medal-trophy.component';
 export * from './lib/drop-down-search/drop-down-search.component';
+export * from './lib/custom-date-picker/custom-date-picker.component';

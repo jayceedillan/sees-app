@@ -1,0 +1,60 @@
+<div class="custom-date-picker">
+  <div class="input-container">
+    <input
+      type="text"
+      [(ngModel)]="displayDate"
+      placeholder="Select Date"
+      readonly
+      (click)="toggleDatePicker()"
+    />
+    <ng-container *ngIf="!displayDate">
+      <i class="fas fa-calendar-alt" (click)="toggleDatePicker()"></i>
+    </ng-container>
+    <ng-container *ngIf="displayDate">
+      <i class="fas fa-times-circle" (click)="clearDate()"></i>
+    </ng-container>
+  </div>
+  <div class="date-picker" *ngIf="showDatePicker">
+    <div class="year-wrapper" *ngIf="selectingYear; else monthPicker">
+      <div class="years-grid">
+        <div class="year" *ngFor="let year of years" (click)="selectYear(year)">
+          {{ year }}
+        </div>
+      </div>
+      <div class="year-nav">
+        <span class="previous" (click)="previousYears()">Previous</span>
+        <span class="next" (click)="nextYears()">Next</span>
+      </div>
+    </div>
+    <ng-template #monthPicker>
+      <div class="calendar">
+        <div class="header">
+          <span class="nav" (click)="previousYear()">‹‹</span>
+          <span class="nav" (click)="previousMonth()">‹</span>
+          <span (click)="startSelectingYear()"
+            >{{ currentMonthName }} {{ currentYear }}</span
+          >
+          <span class="nav" (click)="nextMonth()">›</span>
+          <span class="nav" (click)="nextYear()">››</span>
+        </div>
+        <div class="days">
+          <div
+            *ngFor="let day of daysInMonth"
+            class="day"
+            [ngClass]="{
+              disabled: day === 0,
+              today:
+                day === today.getDate() &&
+                currentMonth === today.getMonth() &&
+                currentYear === today.getFullYear(),
+              selected: day === selectedDate
+            }"
+            (click)="selectDate(day)"
+          >
+            {{ day !== 0 ? day : "" }}
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
