@@ -1,0 +1,26 @@
+<div class="dropdown-container">
+  <button class="dropdown-selected" (click)="toggleDropdown()">
+    {{ selectedOption().name || selectionText }}
+    <span class="arrow">&#9660;</span>
+  </button>
+
+  <div *ngIf="isOpen()" class="dropdown-list">
+    <div class="search-input-container">
+      <i class="fas fa-search search-icon"></i>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search..."
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="filterOptions()"
+      />
+    </div>
+    <div
+      *ngFor="let option of filteredOptions()"
+      class="dropdown-item"
+      (click)="selectOption(option)"
+    >
+      {{ option.name }}
+    </div>
+  </div>
+</div>

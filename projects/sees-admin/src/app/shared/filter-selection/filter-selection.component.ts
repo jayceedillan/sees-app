@@ -17,6 +17,7 @@ import {
   ButtonComponent,
   DatePickerComponent,
   DropDownListComponent,
+  DropDownSearchComponent,
 } from '../../../../../sees-lib/src/public-api';
 import { CommonModule } from '@angular/common';
 
@@ -31,6 +32,7 @@ import { CommonModule } from '@angular/common';
     DatePickerComponent,
     ButtonComponent,
     CommonModule,
+    DropDownSearchComponent,
   ],
 })
 export class FilterSelectionComponent implements OnInit {
@@ -84,13 +86,13 @@ export class FilterSelectionComponent implements OnInit {
     });
   }
 
-  public onChangedEvent(id: number): void {
-    this.eventId.set(id);
-    this.selectedChangedEvent.emit(id);
+  public onChangedEvent(selectedData: NamedValue): void {
+    this.eventId.set(selectedData.value);
+    this.selectedChangedEvent.emit(selectedData.value);
   }
 
-  public onChangedSport(id: number): void {
-    this.sportId.set(id);
-    this.selectedChangedSport.emit(id);
+  public onChangedSport(selectedData: NamedValue): void {
+    this.sportId.set(selectedData.value);
+    this.selectedChangedSport.emit(selectedData.value);
   }
 }

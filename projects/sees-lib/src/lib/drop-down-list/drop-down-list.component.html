@@ -6,7 +6,7 @@
       (change)="onSelectionChange()"
       [formControl]="control!"
     >
-      <option [value]="null" disabled selected>{{ selectionText }}</option>
+      <option>Select Country</option>
       <option *ngFor="let data of dataItems" [value]="data.value">
         {{ data.name }}
       </option>
@@ -23,7 +23,7 @@
 <ng-template #defaultSelect>
   <div class="custom-select">
     <select [(ngModel)]="selectionValue" (change)="onSelectionChange()">
-      <option [value]="null" disabled selected>{{ selectionText }}</option>
+      <option>Select Country</option>
       <option *ngFor="let data of dataItems" [value]="data.value">
         {{ data.name }}
       </option>
