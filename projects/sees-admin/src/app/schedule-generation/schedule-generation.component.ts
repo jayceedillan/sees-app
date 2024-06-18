@@ -25,6 +25,8 @@ import { isEqual } from 'lodash';
 import { TeamsService } from '../admin/team/service/teams.service';
 import { VenuesService } from '../admin/venue/service/venues.service';
 import { NotificationService } from '../../../../../service/notification.service';
+import { NamedValue } from '../admin/namedValue.interface';
+import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
 
 @Component({
   selector: 'sees-app-schedule-generation',
@@ -37,6 +39,7 @@ import { NotificationService } from '../../../../../service/notification.service
     DropDownSearchComponent,
     TimePickerComponent,
     ButtonComponent,
+    CustomDropdownComponent,
   ],
 })
 export class ScheduleGenerationComponent implements OnInit {
@@ -44,14 +47,17 @@ export class ScheduleGenerationComponent implements OnInit {
   public selectedSportID = signal<number>(0);
   public selectedDate = signal<Date>(new Date());
   public eventSchedules = signal<EventSchedule[]>([]);
-  public teams = { name: string; value: number }[] = [];
-  public venues: { name: string; value: number }[] = [];
+  public teams = signal<NamedValue[]>([]);
+  public venues = signal<NamedValue[]>([]);
 
   private scheduleGenerationService = inject(ScheduleGenerationService);
   private formatDateService = inject(FormatDateService);
   private teamService = inject(TeamsService);
   private venueService = inject(VenuesService);
   private notificationService = inject(NotificationService);
+
+  teamAOptions: string[] = ['Option 1', 'Option 2', 'Option 3'];
+  teamBOptions: string[] = ['Option A', 'Option B', 'Option C'];
 
   constructor(@Self() private unsub: UnsubscribeService) {}
 
@@ -77,8 +83,8 @@ export class ScheduleGenerationComponent implements OnInit {
         )
       ),
     }).subscribe(({ teams, venues }) => {
-      this.teams = teams;
-      this.venues = venues;
+      this.teams.set(teams);
+      this.venues.set(venues);
       // this.eventSchedules = eventSchedules;
       // if (!isEqual(this.eventSchedules, eventSchedules)) {
       //   this.eventSchedules = eventSchedules;

@@ -1,0 +1,11 @@
+<div class="custom-dropdown">
+  <div class="selected-item" (click)="toggleDropdown()">
+    {{ selectedOption || "Select Option" }}
+    <i class="fa fa-caret-down"></i>
+  </div>
+  <ul class="dropdown-list" [ngClass]="{ visible: showDropdown }">
+    <li *ngFor="let option of options" (click)="selectOption(option)">
+      {{ option }}
+    </li>
+  </ul>
+</div>

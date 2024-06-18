@@ -1,0 +1,45 @@
+.custom-dropdown {
+  position: relative;
+  width: 200px; /* Adjust as per your design */
+}
+
+.selected-item {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center content vertically */
+  z-index: 1; /* Ensure selected item is above the dropdown list */
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 0; /* Position at the top of the parent container */
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Ensure dropdown list is above other elements */
+  display: none; /* Hide by default */
+  max-height: 150px; /* Limit maximum height to avoid covering other content */
+  overflow-y: auto; /* Enable scrolling if needed */
+}
+
+.dropdown-list.visible {
+  display: block; /* Show dropdown when visible class is applied */
+}
+
+.dropdown-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-list li:hover {
+  background-color: #f0f0f0;
+}

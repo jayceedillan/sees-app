@@ -5,7 +5,6 @@
     (dateChanged)="onDateChanged($event)"
   ></sees-app-filter-selection>
 </div>
-
 <div class="table-container">
   <div class="table-wrapper">
     <div class="table-row">
@@ -17,10 +16,16 @@
     </div>
     <div class="table-row">
       <div class="table-cell">
-        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+        <sees-lib-drop-down-search
+          [dropDownItems]="teams()"
+          selectionText="Select a Team"
+        ></sees-lib-drop-down-search>
       </div>
       <div class="table-cell">
-        <sees-lib-drop-down-search></sees-lib-drop-down-search>
+        <sees-lib-drop-down-search
+          [dropDownItems]="teams()"
+          selectionText="Select a Team"
+        ></sees-lib-drop-down-search>
       </div>
       <div class="table-cell">
         <sees-lib-time-picker></sees-lib-time-picker>
@@ -67,4 +72,48 @@
       </div>
     </div>
   </div>
+  <!-- 
+<div class="table-container">
+  <div class="table-row header-row">
+    <div class="cell">TEAM A</div>
+    <div class="cell">TEAM B</div>
+  </div>
+  <div class="table-row">
+    <div class="cell">
+      <sees-lib-drop-down-search
+        [dropDownItems]="teams()"
+        selectionText="Select a Team"
+      ></sees-lib-drop-down-search>
+    </div>
+    <div class="cell">
+      <sees-lib-drop-down-search
+        [dropDownItems]="teams()"
+        selectionText="Select a Team"
+      ></sees-lib-drop-down-search>
+    </div>
+  </div>
+  <div class="table-row">
+    <div class="cell">
+      <sees-lib-drop-down-search
+        [dropDownItems]="teams()"
+        selectionText="Select a Team"
+      ></sees-lib-drop-down-search>
+    </div>
+    <div class="cell"></div>
+  </div>
+  <div class="table-row">
+    <div class="cell">
+      <sees-lib-drop-down-search
+        [dropDownItems]="teams()"
+        selectionText="Select a Team"
+      ></sees-lib-drop-down-search>
+    </div>
+    <div class="cell">
+      <sees-lib-drop-down-search
+        [dropDownItems]="teams()"
+        selectionText="Select a Team"
+      ></sees-lib-drop-down-search>
+    </div>
+  </div>
+</div> -->
 </div>
